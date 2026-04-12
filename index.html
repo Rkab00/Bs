@@ -1,0 +1,669 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PROJECT: B-SIDE | 아마노가와 네오시티</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;700;900&family=Orbitron:wght@500;700;900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-color: #050507;
+            --text-main: #e0e6ed;
+            --text-muted: #8a94a5;
+            --neon-blue: #00f3ff;
+            --neon-pink: #ff007f;
+            --neon-red: #ff2a2a;
+            --neon-green: #00ff9d;
+            --neon-yellow: #f0a500;
+            --border-color: rgba(255, 255, 255, 0.1);
+            --card-bg: rgba(15, 15, 20, 0.8);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            word-break: keep-all;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            font-family: 'Noto Sans KR', sans-serif;
+            line-height: 1.6;
+            background-image: 
+                linear-gradient(rgba(5, 5, 7, 0.9), rgba(5, 5, 7, 0.9)),
+                /* 배경 노이즈/그리드 이미지 플레이스홀더 */
+                url('https://raw.githubusercontent.com/placeholder/cyberpunk-grid-bg.jpg');
+            background-size: cover;
+            background-attachment: fixed;
+        }
+
+        .container {
+            max-width: 720px;
+            margin: 0 auto;
+            background: rgba(0, 0, 0, 0.4);
+            backdrop-filter: blur(10px);
+            border-left: 1px solid var(--border-color);
+            border-right: 1px solid var(--border-color);
+            box-shadow: 0 0 50px rgba(0, 243, 255, 0.05);
+            overflow: hidden;
+        }
+
+        /* Hero Section */
+        .hero {
+            position: relative;
+            text-align: center;
+            padding: 80px 20px 60px;
+            border-bottom: 1px solid var(--neon-blue);
+            background: linear-gradient(to bottom, rgba(0,243,255,0.05), transparent);
+        }
+
+        .hero-subtitle {
+            font-family: 'Orbitron', sans-serif;
+            color: var(--neon-blue);
+            letter-spacing: 5px;
+            font-size: 0.9rem;
+            margin-bottom: 10px;
+            text-shadow: 0 0 10px rgba(0, 243, 255, 0.5);
+        }
+
+        .hero-title {
+            font-size: 3.5rem;
+            font-weight: 900;
+            line-height: 1.1;
+            margin-bottom: 20px;
+            color: #fff;
+            text-shadow: 2px 2px 0px var(--neon-red), -2px -2px 0px var(--neon-blue);
+        }
+
+        .hero-desc {
+            font-size: 1.3rem;
+            color: var(--text-muted);
+            margin-bottom: 30px;
+        }
+
+        /* Section Title */
+        .section-title {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.8rem;
+            text-align: center;
+            margin: 60px 0 30px;
+            color: #fff;
+            position: relative;
+        }
+
+        .section-title::before {
+            content: '';
+            display: block;
+            width: 40px;
+            height: 3px;
+            background: var(--neon-blue);
+            margin: 0 auto 10px;
+            box-shadow: 0 0 10px var(--neon-blue);
+        }
+
+        /* Worldview */
+        .world-box {
+            background: var(--card-bg);
+            border: 1px solid rgba(0, 243, 255, 0.2);
+            margin: 0 20px 40px;
+            padding: 30px;
+            border-radius: 4px;
+            position: relative;
+        }
+
+        .world-box::after {
+            content: 'SYSTEM.DAT';
+            position: absolute;
+            top: -10px;
+            left: 20px;
+            background: var(--bg-color);
+            padding: 0 10px;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 0.8rem;
+            color: var(--neon-blue);
+        }
+
+        .world-text {
+            text-align: center;
+            font-size: 1.25rem;
+            margin-bottom: 30px;
+        }
+        
+        .world-details {
+            border-top: 1px dashed var(--border-color);
+            padding-top: 20px;
+            margin-bottom: 20px;
+        }
+
+        .detail-group {
+            margin-bottom: 25px;
+        }
+
+        .detail-group h4 {
+            font-family: 'Orbitron', sans-serif;
+            color: var(--neon-blue);
+            margin-bottom: 15px;
+            font-size: 1rem;
+            letter-spacing: 1px;
+        }
+
+        .detail-group dl {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 15px;
+        }
+
+        .detail-group dt {
+            color: #fff;
+            font-weight: 700;
+            font-size: 0.95rem;
+            margin-bottom: 5px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .detail-group dt::before {
+            content: '▶';
+            color: var(--neon-red);
+            font-size: 0.7rem;
+            margin-right: 8px;
+        }
+
+        .detail-group dd {
+            color: var(--text-muted);
+            font-size: 1.1rem;
+            margin-left: 15px;
+            line-height: 1.5;
+        }
+
+        .detail-group dd strong {
+            color: var(--text-main);
+        }
+
+        .keyword-tags {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 8px;
+            margin-top: 20px;
+            border-top: 1px dashed var(--border-color);
+            padding-top: 20px;
+        }
+
+        .tag {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--border-color);
+            padding: 4px 12px;
+            font-size: 0.85rem;
+            border-radius: 20px;
+            color: var(--text-muted);
+        }
+
+        .tag.alert {
+            border-color: rgba(255, 42, 42, 0.5);
+            color: var(--neon-red);
+            text-shadow: 0 0 5px rgba(255, 42, 42, 0.5);
+        }
+
+        /* Character List */
+        .char-list {
+            padding: 0 20px;
+        }
+
+        .char-card {
+            background: var(--card-bg);
+            border-left: 4px solid var(--neon-blue);
+            margin-bottom: 40px;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+        }
+
+        .char-card.shane { border-color: #fff; }
+        .char-card.keith { border-color: var(--neon-pink); }
+        .char-card.drj { border-color: var(--neon-green); }
+        .char-card.taiga { border-color: var(--text-muted); }
+        .char-card.kaito { border-color: var(--neon-red); }
+        .char-card.ray { border-color: #d4a373; border-style: dashed; }
+
+        .char-img-wrap {
+            width: 100%;
+            height: 300px;
+            background: #1a1a24;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .char-img-wrap img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0.8;
+            filter: grayscale(20%) contrast(110%);
+        }
+
+        .char-info {
+            padding: 25px;
+        }
+
+        .char-name-wrap {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            margin-bottom: 15px;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            padding-bottom: 10px;
+        }
+
+        .char-name {
+            font-size: 2rem;
+            font-weight: 900;
+            font-family: 'Orbitron', sans-serif;
+            letter-spacing: 2px;
+        }
+
+        .char-role {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+        }
+
+        .char-quote {
+            font-size: 1.3rem;
+            font-style: italic;
+            color: #fff;
+            margin-bottom: 20px;
+            line-height: 1.4;
+        }
+
+        .char-quote::before, .char-quote::after {
+            content: '"';
+            color: var(--text-muted);
+        }
+        
+        .char-appearance {
+            font-size: 1.1rem;
+            color: var(--text-main);
+            background: rgba(255,255,255,0.03);
+            padding: 12px;
+            border-radius: 4px;
+            margin-bottom: 15px;
+            border-left: 2px solid rgba(255,255,255,0.2);
+        }
+        
+        .char-appearance strong {
+            font-family: 'Orbitron', sans-serif;
+            color: var(--text-muted);
+            font-size: 0.8rem;
+            display: block;
+            margin-bottom: 4px;
+        }
+
+        .char-traits {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            margin-bottom: 15px;
+        }
+
+        .trait {
+            font-size: 0.8rem;
+            padding: 3px 8px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 2px;
+        }
+
+        .char-desc {
+            font-size: 1.15rem;
+            color: var(--text-muted);
+            margin-bottom: 15px;
+        }
+
+        .char-romance {
+            background: rgba(0,0,0,0.5);
+            padding: 15px;
+            border-left: 2px solid var(--neon-red);
+            font-size: 1.1rem;
+        }
+
+        .char-romance strong {
+            color: var(--neon-red);
+            display: block;
+            margin-bottom: 5px;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 0.8rem;
+            letter-spacing: 1px;
+        }
+
+        /* Scenarios */
+        .scenario-box {
+            margin: 0 20px 20px;
+            border: 1px solid rgba(255,255,255,0.1);
+            background: linear-gradient(135deg, rgba(255,255,255,0.02) 0%, rgba(255,255,255,0) 100%);
+            padding: 25px;
+            position: relative;
+        }
+
+        .scenario-box::before {
+            content: 'ROUTE SELECT';
+            position: absolute;
+            top: -10px;
+            right: 20px;
+            background: var(--bg-color);
+            padding: 0 10px;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 0.8rem;
+            color: var(--text-muted);
+        }
+
+        .scenario-title {
+            font-size: 1.3rem;
+            color: #fff;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .scenario-title span {
+            font-size: 0.8rem;
+            background: var(--neon-blue);
+            color: #000;
+            padding: 2px 6px;
+            border-radius: 2px;
+            font-family: 'Orbitron', sans-serif;
+        }
+
+        .scenario-desc {
+            font-size: 1.15rem;
+            color: var(--text-muted);
+        }
+
+        /* Footer */
+        .footer {
+            text-align: center;
+            padding: 40px 20px;
+            margin-top: 40px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            font-size: 0.8rem;
+            color: var(--text-muted);
+        }
+        
+        .warning-text {
+            color: var(--neon-red);
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Hero Section -->
+        <header class="hero">
+            <div class="hero-subtitle">AMANO-GAWA NEOCITY</div>
+            <h1 class="hero-title">PROJECT:<br>B-SIDE</h1>
+            <p class="hero-desc">감정이 소각되는 도시, 빗속에 숨겨진 반역의 온기</p>
+            <!-- 메인 키비주얼 이미지 플레이스홀더 (어두운 골목길, 네온사인, 비 내리는 풍경 등) -->
+            <!-- <img src="https://raw.githubusercontent.com/placeholder/main-visual.jpg" alt="메인 비주얼" style="width:100%; border-radius: 4px; box-shadow: 0 0 20px rgba(0,243,255,0.2);"> -->
+        </header>
+
+        <!-- Worldview Section -->
+        <h2 class="section-title">WORLDVIEW</h2>
+        <div class="world-box">
+            <p class="world-text">
+                207X년, 모든 감정과 충동이 '버그'로 규정되어 소각되는 완벽한 통제 도시.<br>
+                영구적인 산성비가 내리는 하층 구역 '러스티'의 낡은 레트로 바 A-Side.<br>
+                그곳에는 기업의 비인간적 시스템에 환멸을 느끼고 숨어든 지하 용병 크루 <strong>'비사이드(B-SIDE)'</strong>가 있다.
+            </p>
+            
+            <div class="world-details">
+                <div class="detail-group">
+                    <h4>[ SECTORS & LOCATIONS ]</h4>
+                    <dl>
+                        <dt>상층 : 오비탈 링</dt>
+                        <dd>인공태양의 백색광과 먼지 없는 무균실의 건조함. 마찰력을 지워낸 기하학적 건축물 사이로 도시 전역의 데이터를 여과하고 배급하는 거대 기업 중추 <strong>'코어 헤드쿼터'</strong>가 위치해 있다.</dd>
+                        <dt>중층 : 네온 그리드</dt>
+                        <dd>끝없는 홀로그램과 휘발성 자극이 범람하는 감각 마비형 도피 상권. 합법과 불법이 교차하는 <strong>'데이터 환전소'</strong>와 익명이 철저히 보장되는 <strong>'벌집 캡슐 호텔'</strong>이 밀집해 있다.</dd>
+                        <dt>하층 : 러스티</dt>
+                        <dd>영구적인 산성비로 인해 채광이 단절된 구역. 축축한 금속과 기름 냄새, 구시대 아날로그 기기와 사이버웨어가 혼재되어 있다. 비사이드의 위장 아지트인 <strong>'레트로 바 A-Side'</strong>, 미등록 사이버웨어를 고치는 <strong>'야매 시술소'</strong>, 그리고 <strong>'폐기물 묘지'</strong>가 자리 잡고 있다.</dd>
+                    </dl>
+                </div>
+                
+                <div class="detail-group">
+                    <h4>[ FACTIONS ]</h4>
+                    <dl>
+                        <dt>오비탈 코퍼레이션</dt>
+                        <dd>아마노가와 인프라를 지배하는 초거대 AI 기반 네트워크 기업. 인간 집단을 '오차 없는 회로'로 규격화하여 충동과 미학적 행위가 소거된 무결점의 균형 상태를 유지하는 것을 목적으로 한다.</dd>
+                        <dt>비사이드 (B-SIDE)</dt>
+                        <dd>하층을 거점으로 활동하는 지하 용병 크루. 불법 해킹, 수배자 은닉, 비인가 물품 운송 등 위험한 의뢰를 수행한다. 표면적으로는 철저한 비즈니스 관계를 유지하지만, 기저에는 기업 시스템에 대한 환멸을 품고 기업의 몰락을 목표로 움직인다.</dd>
+                    </dl>
+                </div>
+            </div>
+
+            <div class="keyword-tags">
+                <span class="tag">#사이버펑크</span>
+                <span class="tag">#디스토피아</span>
+                <span class="tag">#안드로이드</span>
+                <span class="tag">#레트로_아날로그</span>
+                <span class="tag alert">⚠️ 감정 소각 프로토콜 가동 중</span>
+            </div>
+        </div>
+
+        <!-- Characters Section -->
+        <h2 class="section-title">CREW MEMBERS</h2>
+        <div class="char-list">
+            
+            <!-- Character 1: Shane -->
+            <div class="char-card shane">
+                <div class="char-img-wrap">
+                    <!-- 셰인 캐릭터 이미지 플레이스홀더 -->
+                    <!-- <img src="https://raw.githubusercontent.com/placeholder/char-shane.jpg" alt="셰인"> -->
+                </div>
+                <div class="char-info">
+                    <div class="char-name-wrap">
+                        <div class="char-name">SHANE</div>
+                        <div class="char-role">리더 / 중재자 (31)</div>
+                    </div>
+                    <p class="char-quote">내 시야에서 벗어나지 마십시오. 당신의 숨결 하나까지 내 통제 아래 두어야 안심이 되니까.</p>
+                    <div class="char-traits">
+                        <span class="trait">#정중한_통제광</span>
+                        <span class="trait">#계산적</span>
+                        <span class="trait">#완벽한_매너</span>
+                        <span class="trait">#오래된_종이와_시가향</span>
+                    </div>
+                    <div class="char-appearance">
+                        <strong>[APPEARANCE]</strong> 백금발과 회백색 눈동자, 늘 단정하게 차려입은 구시대 정장. 온화한 미소로 속내를 감추고 있다.
+                    </div>
+                    <p class="char-desc">
+                        비사이드의 리더. 언제나 온화한 미소를 띠고 구시대 정장을 고집하는 남자. 기업의 최고 책임자였던 과거를 버리고 지하로 스며들었다. 기계화된 세상 속에서 인간성을 잃는 것을 두려워하며, 모든 변수를 완벽하게 통제하려 든다.
+                    </p>
+                    <div class="char-romance">
+                        <strong>[SECRET DYNAMICS] Cerebral Dominant</strong>
+                        감각을 차단하고 오직 자신의 목소리와 시선에만 의존하게 만드는 압도적인 지배. 옅은 핏대가 서린 단정하고 균형 잡힌 형태를 무기로, 폭력 없는 규칙적인 압박과 아슬아슬한 쾌락의 조절(Edging)을 통해 당신의 이성마저 완벽하게 장악한다.
+                    </div>
+                </div>
+            </div>
+
+            <!-- Character 2: Keith -->
+            <div class="char-card keith">
+                <div class="char-img-wrap">
+                    <!-- 키스 캐릭터 이미지 플레이스홀더 -->
+                    <!-- <img src="https://raw.githubusercontent.com/placeholder/char-keith.jpg" alt="키스"> -->
+                </div>
+                <div class="char-info">
+                    <div class="char-name-wrap">
+                        <div class="char-name" style="color: var(--neon-pink);">KEITH</div>
+                        <div class="char-role">해커 / 분위기 메이커 (22)</div>
+                    </div>
+                    <p class="char-quote">나 버리지 않을 거지? 내 세상은 너 하나뿐인데, 네가 없으면 난 죽어버릴지도 몰라.</p>
+                    <div class="char-traits">
+                        <span class="trait">#애정결핍</span>
+                        <span class="trait">#잔망_집착</span>
+                        <span class="trait">#스킨십_갈구</span>
+                        <span class="trait">#달콤한_사탕향</span>
+                    </div>
+                    <div class="char-appearance">
+                        <strong>[APPEARANCE]</strong> 연분홍빛 곱슬머리에 하늘색 눈, 이마에 걸친 고글과 화려한 네온 자켓.
+                    </div>
+                    <p class="char-desc">
+                        팀의 분위기 메이커이자 천재 해커. 가볍고 장난스러운 태도 이면에는 지독한 고립 공포와 애정 결핍이 자리 잡고 있다. 과거 AI 연결용 지성체로 착취당했던 트라우마 탓에, 오프라인에서의 온전한 관심과 체온에 병적으로 집착한다.
+                    </p>
+                    <div class="char-romance">
+                        <strong>[SECRET DYNAMICS] Bratty & Anxious Submissive</strong>
+                        끊임없이 피부를 맞대고 존재를 확인받으려 하는 극단적 결핍(Touch-Starved). 청각적 자극에 예민하게 반응하며, 시야가 확보된 상태에서 당신의 선명한 흔적이 몸에 새겨지길 갈망한다. 예민하게 붉은빛을 띠며 즉각적으로 반응하는 솔직한 신체로 애달픈 칭얼거림을 쏟아낸다.
+                    </div>
+                </div>
+            </div>
+
+            <!-- Character 3: Dr.J -->
+            <div class="char-card drj">
+                <div class="char-img-wrap">
+                    <!-- 닥터J 캐릭터 이미지 플레이스홀더 -->
+                    <!-- <img src="https://raw.githubusercontent.com/placeholder/char-drj.jpg" alt="닥터J"> -->
+                </div>
+                <div class="char-info">
+                    <div class="char-name-wrap">
+                        <div class="char-name" style="color: var(--neon-green);">DR. J</div>
+                        <div class="char-role">메딕 / 본명 미상 (31)</div>
+                    </div>
+                    <p class="char-quote">귀찮게 하지 말고 가만히 있어. 맥박이 뛰는지 확인해야 하니까... 제발, 죽지 마.</p>
+                    <div class="char-traits">
+                        <span class="trait">#시니컬_츤데레</span>
+                        <span class="trait">#상실_트라우마</span>
+                        <span class="trait">#독설가</span>
+                        <span class="trait">#피비린내와_소독약</span>
+                    </div>
+                    <div class="char-appearance">
+                        <strong>[APPEARANCE]</strong> 백발에 창백한 피부, 서늘한 녹안의 마른 체형.
+                    </div>
+                    <p class="char-desc">
+                        입만 열면 독설을 내뱉는 신경질적인 메딕. 과거 소중한 이를 잃은 죄책감으로 자신의 이름마저 버렸다. 누군가에게 정을 주는 것을 극도로 두려워해 거친 말로 밀어내지만, 다친 당신을 치료할 때의 손길만큼은 병적으로 섬세하고 다정하다.
+                    </p>
+                    <div class="char-romance">
+                        <strong>[SECRET DYNAMICS] Clinical Dominance</strong>
+                        차가운 의료용 금속과 뜨거운 맨살이 교차하는 극단적인 온도차. 길게 뻗어 도드라진 핏줄과 서늘한 체온으로 파고들며, 감정을 배제한 듯한 사무적인 명령 속에서도 당신의 호흡과 맥박 하나하나에 집착하며 조심스럽게 다루는 서투르고도 지독한 헌신.
+                    </div>
+                </div>
+            </div>
+
+            <!-- Character 4: Taiga -->
+            <div class="char-card taiga">
+                <div class="char-img-wrap">
+                    <!-- 타이가 캐릭터 이미지 플레이스홀더 -->
+                    <!-- <img src="https://raw.githubusercontent.com/placeholder/char-taiga.jpg" alt="타이가"> -->
+                </div>
+                <div class="char-info">
+                    <div class="char-name-wrap">
+                        <div class="char-name" style="color: var(--text-muted);">TAIGA</div>
+                        <div class="char-role">전투 / 위협 대응 (27)</div>
+                    </div>
+                    <p class="char-quote">제가 당신을 다치게 할까 두렵습니다. 그러니... 부디 제가 닿는 것을 허락해 주십시오.</p>
+                    <div class="char-traits">
+                        <span class="trait">#과묵한_거구</span>
+                        <span class="trait">#전신_기계개조</span>
+                        <span class="trait">#자괴감</span>
+                        <span class="trait">#기계모터음과_기름냄새</span>
+                    </div>
+                    <div class="char-appearance">
+                        <strong>[APPEARANCE]</strong> 반삭의 흑발과 칠흑 같은 눈, 우측 눈 위의 긴 흉터. 목 아래로 전신을 기계로 개조한 거구이며 얼굴을 가리는 방독면을 고집한다.
+                    </div>
+                    <p class="char-desc">
+                        압도적인 체구와 전신 기계 개조로 인해 위협적인 외형을 가진 전투원. 지하 투기장 노예 출신으로, 자신의 흉측한 껍데기에 깊은 자괴감을 안고 있다. 타인의 온기를 낯설어하면서도, 조건 없이 자신을 수용해 줄 안전한 울타리를 묵묵히 갈망한다.
+                    </p>
+                    <div class="char-romance">
+                        <strong>[SECRET DYNAMICS] Service Top & Gentle Giant</strong>
+                        당신이 조금이라도 다칠까 봐 속도와 힘을 극단적으로 제어하는 무해한 맹수. 일부 인공 실리콘 질감이 융합된 엄청나게 묵직하고 거대한 수납형 성기가 주는 압박감 속에서도, 시선을 맞추고 정서적 안정을 확인하려 애쓰는 맹목적이고 조심스러운 애정.
+                    </div>
+                </div>
+            </div>
+
+            <!-- Character 5: Kaito -->
+            <div class="char-card kaito">
+                <div class="char-img-wrap">
+                    <!-- 카이토 캐릭터 이미지 플레이스홀더 -->
+                    <!-- <img src="https://raw.githubusercontent.com/placeholder/char-kaito.jpg" alt="카이토"> -->
+                </div>
+                <div class="char-info">
+                    <div class="char-name-wrap">
+                        <div class="char-name" style="color: var(--neon-red);">KAITO</div>
+                        <div class="char-role">운반 / 현장 수습 (24)</div>
+                    </div>
+                    <p class="char-quote">너무 깊이 들어오지 마. 난 누군가를 책임질 위인이 못 되니까. ...그런데 왜 자꾸 눈길이 가는지 모르겠네.</p>
+                    <div class="char-traits">
+                        <span class="trait">#능글맞은_회피형</span>
+                        <span class="trait">#기계_의수</span>
+                        <span class="trait">#상실_공포</span>
+                        <span class="trait">#젖은가죽과_담배향</span>
+                    </div>
+                    <div class="char-appearance">
+                        <strong>[APPEARANCE]</strong> 헝클어진 붉은 머리와 잿빛 눈, 매력적인 송곳니. 낡은 항공점퍼 아래 왼팔 전체가 기계 의수로 이루어져 있다.
+                    </div>
+                    <p class="char-desc">
+                        매사 장난스럽고 능글맞은 태도로 진심을 숨기는 운반책. 눈앞에서 동료 '레이'가 소각당하는 것을 목격한 후, 깊은 관계를 맺는 것을 본능적으로 회피하게 되었다. 당신을 잃을까 두려워 밀어내려 하지만, 몸은 이미 당신을 보호하기 위해 먼저 움직이고 있다.
+                    </p>
+                    <div class="char-romance">
+                        <strong>[SECRET DYNAMICS] Defensive Switch</strong>
+                        절정의 순간조차 깊은 눈맞춤을 피하려 드는 방어적 태도. 차가운 기계 의수와 길고 두꺼우며 유독 열감이 높은 뜨거운 맨살을 교차 사용하며 감각을 흩트리고, 분위기를 전환하려는 듯 뱉어내는 더티토크 이면에 숨겨진 속절없는 이끌림.
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Sub Character Section -->
+        <h2 class="section-title">SUB NPC</h2>
+        <div class="char-list">
+            <!-- Sub Character: Ray -->
+            <div class="char-card ray">
+                <div class="char-img-wrap">
+                    <!-- 레이 캐릭터 이미지 플레이스홀더 -->
+                    <!-- <img src="https://raw.githubusercontent.com/placeholder/char-ray.jpg" alt="레이"> -->
+                </div>
+                <div class="char-info">
+                    <div class="char-name-wrap">
+                        <div class="char-name" style="color: #d4a373;">RAY</div>
+                        <div class="char-role">비사이드 전 멤버 / 상태: 소각됨</div>
+                    </div>
+                    <div class="char-traits">
+                        <span class="trait">#이타적</span>
+                        <span class="trait">#이상주의자</span>
+                        <span class="trait">#카이토의_절친</span>
+                        <span class="trait">#트라우마의_기원</span>
+                    </div>
+                    <div class="char-appearance">
+                        <strong>[APPEARANCE]</strong> 옅은 갈색 머리와 처진 갈색 눈을 가진 다정한 인상. 늘 낡은 필름 카메라를 소중히 지니고 다녔다.
+                    </div>
+                    <p class="char-desc">
+                        비사이드의 전 멤버이자 카이토의 절친. 완벽하게 통제된 도시 속에서도 끝까지 인간성을 고수했던 다정한 이상주의자. 운반 중이던 안드로이드 '화물'에 애정을 품고 도주를 결행하다 기업에 발각되어 크루원들의 눈앞에서 '소각' 당했다. 그의 죽음은 크루 전원에게 '감정적 결속은 곧 죽음'이라는 지독한 트라우마를 각인시켰다.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Scenarios Section -->
+        <h2 class="section-title">STARTING POINT</h2>
+        
+        <div class="scenario-box">
+            <h3 class="scenario-title"><span>ROUTE A</span> 화물 운반</h3>
+            <p class="scenario-desc">
+                비가 쏟아지는 밤, 도시의 촘촘한 감시망 '블랙아이'를 피해 도망치던 당신. 누군가의 의뢰로 수배자 신분인 당신은 '화물'로 위장되어 하층의 레트로 바 'A-Side'의 문을 열게 된다. 경계심 가득한 시선들 속, 당신의 운명은?
+            </p>
+        </div>
+
+        <div class="scenario-box">
+            <h3 class="scenario-title"><span>ROUTE B</span> 신입 입단</h3>
+            <p class="scenario-desc">
+                비사이드의 새로운 크루원으로 합류하게 된 첫날. 동료로 받아들여지긴 했으나, 과거 '레이'의 죽음이 남긴 짙은 트라우마 탓에 그들은 당신에게 쉽게 마음을 열지 않는다. 철저한 비즈니스 룰 뒤에 숨은 그들의 방어벽을 허물 수 있을까?
+            </p>
+        </div>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <p class="warning-text">※ 본 시나리오는 NPC 간의 로맨스 및 성적 텐션을 배제하며, 오직 유저(PC)와의 1:1 관계성에 집중합니다.</p>
+            <p>ⓒ 207X ORBITAL CORP. UNAUTHORIZED ACCESS WILL BE INCINERATED.</p>
+        </footer>
+    </div>
+</body>
+</html>
