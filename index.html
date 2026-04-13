@@ -35,8 +35,7 @@
             line-height: 1.6;
             background-image: 
                 linear-gradient(rgba(5, 5, 7, 0.9), rgba(5, 5, 7, 0.9)),
-                /* 배경 노이즈/그리드 이미지 플레이스홀더 */
-                url('https://raw.githubusercontent.com/placeholder/cyberpunk-grid-bg.jpg');
+                url('https://raw.githubusercontent.com/Rkab00/Bs/refs/heads/main/BG.png');
             background-size: cover;
             background-attachment: fixed;
         }
@@ -52,13 +51,53 @@
             overflow: hidden;
         }
 
-        /* Hero Section */
+        /* --- Hero Section (배경 위 타이틀 배치 및 아날로그 효과) --- */
         .hero {
             position: relative;
+            width: 100%;
+            aspect-ratio: 3 / 2; /* 3:2 가로 사이즈 유지 */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            border-bottom: 2px solid var(--neon-blue);
+        }
+
+        /* 아날로그 티비 배경 효과 */
+        .hero-screen-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('https://raw.githubusercontent.com/Rkab00/Bs/refs/heads/main/BG.png');
+            background-size: cover;
+            background-position: center;
+            filter: blur(6px) brightness(0.6) contrast(1.2); /* 뿌옇고 흐릿한 효과 */
+            z-index: 1;
+        }
+
+        /* 주사선 및 노이즈 오버레이 */
+        .hero-screen-bg::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.15) 50%), 
+                        linear-gradient(90deg, rgba(255, 0, 0, 0.05), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.05));
+            background-size: 100% 3px, 3px 100%;
+            z-index: 2;
+            pointer-events: none;
+        }
+
+        /* 배경 위로 올라올 텍스트 컨텐츠 */
+        .hero-content {
+            position: relative;
+            z-index: 3;
             text-align: center;
-            padding: 80px 20px 60px;
-            border-bottom: 1px solid var(--neon-blue);
-            background: linear-gradient(to bottom, rgba(0,243,255,0.05), transparent);
+            padding: 20px;
         }
 
         .hero-subtitle {
@@ -66,8 +105,8 @@
             color: var(--neon-blue);
             letter-spacing: 5px;
             font-size: 0.9rem;
-            margin-bottom: 10px;
-            text-shadow: 0 0 10px rgba(0, 243, 255, 0.5);
+            margin-bottom: 15px;
+            text-shadow: 0 0 10px rgba(0, 243, 255, 1);
         }
 
         .hero-title {
@@ -76,14 +115,16 @@
             line-height: 1.1;
             margin-bottom: 20px;
             color: #fff;
-            text-shadow: 2px 2px 0px var(--neon-red), -2px -2px 0px var(--neon-blue);
+            text-shadow: 3px 3px 0px var(--neon-red), -3px -3px 0px var(--neon-blue), 0 0 20px rgba(0,0,0,0.8);
         }
 
         .hero-desc {
-            font-size: 1.3rem;
-            color: var(--text-muted);
-            margin-bottom: 30px;
+            font-size: 1.2rem;
+            color: #fff;
+            font-weight: 500;
+            text-shadow: 0 0 10px rgba(0,0,0,1);
         }
+        /* -------------------------------------------------- */
 
         /* Section Title */
         .section-title {
@@ -180,10 +221,6 @@
             line-height: 1.5;
         }
 
-        .detail-group dd strong {
-            color: var(--text-main);
-        }
-
         .keyword-tags {
             display: flex;
             flex-wrap: wrap;
@@ -232,7 +269,8 @@
 
         .char-img-wrap {
             width: 100%;
-            height: 300px;
+            aspect-ratio: 3 / 2;
+            height: auto;
             background: #1a1a24;
             position: relative;
             overflow: hidden;
@@ -400,22 +438,22 @@
 </head>
 <body>
     <div class="container">
-        <!-- Hero Section -->
         <header class="hero">
-            <div class="hero-subtitle">AMANO-GAWA NEOCITY</div>
-            <h1 class="hero-title">PROJECT:<br>B-SIDE</h1>
-            <p class="hero-desc">감정이 소각되는 도시, 빗속에 숨겨진 반역의 온기</p>
-            <!-- 메인 키비주얼 이미지 플레이스홀더 (어두운 골목길, 네온사인, 비 내리는 풍경 등) -->
-            <!-- <img src="https://raw.githubusercontent.com/placeholder/main-visual.jpg" alt="메인 비주얼" style="width:100%; border-radius: 4px; box-shadow: 0 0 20px rgba(0,243,255,0.2);"> -->
+            <div class="hero-screen-bg"></div>
+            
+            <div class="hero-content">
+                <div class="hero-subtitle">AMANO-GAWA NEOCITY</div>
+                <h1 class="hero-title">PROJECT:<br>B-SIDE</h1>
+                <p class="hero-desc">감정이 버그가 된 도시, 그 이면의 미약한 주파수</p>
+            </div>
         </header>
 
-        <!-- Worldview Section -->
         <h2 class="section-title">WORLDVIEW</h2>
         <div class="world-box">
             <p class="world-text">
-                207X년, 모든 감정과 충동이 '버그'로 규정되어 소각되는 완벽한 통제 도시.<br>
-                영구적인 산성비가 내리는 하층 구역 '러스티'의 낡은 레트로 바 A-Side.<br>
-                그곳에는 기업의 비인간적 시스템에 환멸을 느끼고 숨어든 지하 용병 크루 <strong>'비사이드(B-SIDE)'</strong>가 있다.
+                207X년, 모든 감정과 충동이 '버그'로 규정되어 소각되는 완벽한 통제 도시, 아마노가와 메가시티. 이 곳에서는 모든 인간들이 자신의 감정을 숨긴 채, 삭막한 하루하루를 살아간다.<br>
+                매가시티 최저층, 영구적인 산성비가 내리는 하층 구역 '러스티'에 위치한 낡은 레트로 바 'A-Side'.<br>
+                언제나 구시대의 시티팝이 흐르는 그곳에는 기업의 비인간적 시스템에 반감을 느끼고 숨어든 지하 용병 크루 <strong>'B-SIDE'</strong>가 존재한다.
             </p>
             
             <div class="world-details">
@@ -423,11 +461,11 @@
                     <h4>[ SECTORS & LOCATIONS ]</h4>
                     <dl>
                         <dt>상층 : 오비탈 링</dt>
-                        <dd>인공태양의 백색광과 먼지 없는 무균실의 건조함. 마찰력을 지워낸 기하학적 건축물 사이로 도시 전역의 데이터를 여과하고 배급하는 거대 기업 중추 <strong>'코어 헤드쿼터'</strong>가 위치해 있다.</dd>
+                        <dd>인공태양의 백색광과 먼지 없는 무균실의 건조함. 매끈하고 기하학적인 건축물 사이로 도시 전역의 데이터를 여과하고 배급하는 거대 기업 중추 <strong>'코어 헤드쿼터'</strong>가 위치해 있다.</dd>
                         <dt>중층 : 네온 그리드</dt>
-                        <dd>끝없는 홀로그램과 휘발성 자극이 범람하는 감각 마비형 도피 상권. 합법과 불법이 교차하는 <strong>'데이터 환전소'</strong>와 익명이 철저히 보장되는 <strong>'벌집 캡슐 호텔'</strong>이 밀집해 있다.</dd>
+                        <dd>끝없는 홀로그램과 휘발성 정보가 범람하는 데이터 포화 상권. 합법과 불법이 교차하는 <strong>'데이터 환전소'</strong>와 익명이 철저히 보장되는 <strong>'벌집 캡슐 호텔'</strong>이 밀집해 있다.</dd>
                         <dt>하층 : 러스티</dt>
-                        <dd>영구적인 산성비로 인해 채광이 단절된 구역. 축축한 금속과 기름 냄새, 구시대 아날로그 기기와 사이버웨어가 혼재되어 있다. 비사이드의 위장 아지트인 <strong>'레트로 바 A-Side'</strong>, 미등록 사이버웨어를 고치는 <strong>'야매 시술소'</strong>, 그리고 <strong>'폐기물 묘지'</strong>가 자리 잡고 있다.</dd>
+                        <dd>영구적인 산성비로 인해 채광이 단절된 구역. 축축한 금속과 기름 냄새, 구시대 아날로그 기기와 사이버웨어가 혼재되어 있다. 비사이드의 위장 아지트인 <strong>'레트로 바 A-Side'</strong>, 미등록 사이버웨어를 고치는 <strong>'야매 시술소'</strong>, 그리고 모든 것들의 종착지인 <strong>'폐기물 묘지'</strong>가 자리 잡고 있다.</dd>
                     </dl>
                 </div>
                 
@@ -435,9 +473,9 @@
                     <h4>[ FACTIONS ]</h4>
                     <dl>
                         <dt>오비탈 코퍼레이션</dt>
-                        <dd>아마노가와 인프라를 지배하는 초거대 AI 기반 네트워크 기업. 인간 집단을 '오차 없는 회로'로 규격화하여 충동과 미학적 행위가 소거된 무결점의 균형 상태를 유지하는 것을 목적으로 한다.</dd>
+                        <dd>아마노가와 시티 전체 인프라를 지배하는 초거대 AI 기반 네트워크 기업. 인간 집단을 AI 프로토콜 기준 하에 규격화하여 충동과 감정적 교류 행위가 소거된 무결점의 완벽한 균형 상태를 유지하는 것을 목적으로 한다.</dd>
                         <dt>비사이드 (B-SIDE)</dt>
-                        <dd>하층을 거점으로 활동하는 지하 용병 크루. 불법 해킹, 수배자 은닉, 비인가 물품 운송 등 위험한 의뢰를 수행한다. 표면적으로는 철저한 비즈니스 관계를 유지하지만, 기저에는 기업 시스템에 대한 환멸을 품고 기업의 몰락을 목표로 움직인다.</dd>
+                        <dd>하층을 거점으로 활동하는 지하 용병 크루. 불법 해킹, 수배자 은닉, 비인가 물품 운송 등 위험한 의뢰를 수행한다. 표면적으로는 철저한 비즈니스 관계를 유지하지만, 기저에는 기업에 대한 반발감을 품고 기업의 몰락을 목표로 움직인다.</dd>
                     </dl>
                 </div>
             </div>
@@ -451,22 +489,19 @@
             </div>
         </div>
 
-        <!-- Characters Section -->
         <h2 class="section-title">CREW MEMBERS</h2>
         <div class="char-list">
             
-            <!-- Character 1: Shane -->
             <div class="char-card shane">
                 <div class="char-img-wrap">
-                    <!-- 셰인 캐릭터 이미지 플레이스홀더 -->
-                    <!-- <img src="https://raw.githubusercontent.com/placeholder/char-shane.jpg" alt="셰인"> -->
+                    <img src="https://raw.githubusercontent.com/Rkab00/Bs/refs/heads/main/Sinfo.png" alt="셰인">
                 </div>
                 <div class="char-info">
                     <div class="char-name-wrap">
                         <div class="char-name">SHANE</div>
                         <div class="char-role">리더 / 중재자 (31)</div>
                     </div>
-                    <p class="char-quote">내 시야에서 벗어나지 마십시오. 당신의 숨결 하나까지 내 통제 아래 두어야 안심이 되니까.</p>
+                    <p class="char-quote">규칙은 사람을 지키기 위해 있는거예요. 다만, 누구의 규칙이냐가 문제일 뿐이죠.</p>
                     <div class="char-traits">
                         <span class="trait">#정중한_통제광</span>
                         <span class="trait">#계산적</span>
@@ -477,20 +512,18 @@
                         <strong>[APPEARANCE]</strong> 백금발과 회백색 눈동자, 늘 단정하게 차려입은 구시대 정장. 온화한 미소로 속내를 감추고 있다.
                     </div>
                     <p class="char-desc">
-                        비사이드의 리더. 언제나 온화한 미소를 띠고 구시대 정장을 고집하는 남자. 기업의 최고 책임자였던 과거를 버리고 지하로 스며들었다. 기계화된 세상 속에서 인간성을 잃는 것을 두려워하며, 모든 변수를 완벽하게 통제하려 든다.
+                        비사이드의 리더. 신체 개조 전적이 없으며, 구시대 복장을 고집하는 남자. 기업의 최고 책임자였던 과거를 버리고 지하로 스며들었다. 기계화된 세상 속에서 인간성을 잃는 것을 두려워하며, 크루를 완벽하게 조율하기 위해 항상 노력한다.
                     </p>
                     <div class="char-romance">
                         <strong>[SECRET DYNAMICS] Cerebral Dominant</strong>
-                        감각을 차단하고 오직 자신의 목소리와 시선에만 의존하게 만드는 압도적인 지배. 옅은 핏대가 서린 단정하고 균형 잡힌 형태를 무기로, 폭력 없는 규칙적인 압박과 아슬아슬한 쾌락의 조절(Edging)을 통해 당신의 이성마저 완벽하게 장악한다.
+                        감각을 차단하고 오직 자신의 목소리와 시선에만 의존하게 만드는 압도적인 지배. 규칙적인 압박과 아슬아슬한 쾌락의 조절(Edging)을 통해 당신의 이성마저 완벽하게 장악한다.
                     </div>
                 </div>
             </div>
 
-            <!-- Character 2: Keith -->
             <div class="char-card keith">
                 <div class="char-img-wrap">
-                    <!-- 키스 캐릭터 이미지 플레이스홀더 -->
-                    <!-- <img src="https://raw.githubusercontent.com/placeholder/char-keith.jpg" alt="키스"> -->
+                    <img src="https://raw.githubusercontent.com/Rkab00/Bs/refs/heads/main/Kinfo.png" alt="키스">
                 </div>
                 <div class="char-info">
                     <div class="char-name-wrap">
@@ -512,16 +545,14 @@
                     </p>
                     <div class="char-romance">
                         <strong>[SECRET DYNAMICS] Bratty & Anxious Submissive</strong>
-                        끊임없이 피부를 맞대고 존재를 확인받으려 하는 극단적 결핍(Touch-Starved). 청각적 자극에 예민하게 반응하며, 시야가 확보된 상태에서 당신의 선명한 흔적이 몸에 새겨지길 갈망한다. 예민하게 붉은빛을 띠며 즉각적으로 반응하는 솔직한 신체로 애달픈 칭얼거림을 쏟아낸다.
+                        끊임없이 피부를 맞대고 존재를 확인받으려 하는 극단적 결핍(Touch-Starved). 청각적 자극에 예민하게 반응하며, 시야가 확보된 상태에서 당신의 선명한 흔적이 몸에 새겨지길 갈망한다.
                     </div>
                 </div>
             </div>
 
-            <!-- Character 3: Dr.J -->
             <div class="char-card drj">
                 <div class="char-img-wrap">
-                    <!-- 닥터J 캐릭터 이미지 플레이스홀더 -->
-                    <!-- <img src="https://raw.githubusercontent.com/placeholder/char-drj.jpg" alt="닥터J"> -->
+                    <img src="https://raw.githubusercontent.com/Rkab00/Bs/refs/heads/main/Jinfo.png" alt="닥터J">
                 </div>
                 <div class="char-info">
                     <div class="char-name-wrap">
@@ -539,20 +570,18 @@
                         <strong>[APPEARANCE]</strong> 백발에 창백한 피부, 서늘한 녹안의 마른 체형.
                     </div>
                     <p class="char-desc">
-                        입만 열면 독설을 내뱉는 신경질적인 메딕. 과거 소중한 이를 잃은 죄책감으로 자신의 이름마저 버렸다. 누군가에게 정을 주는 것을 극도로 두려워해 거친 말로 밀어내지만, 다친 당신을 치료할 때의 손길만큼은 병적으로 섬세하고 다정하다.
+                        입만 열면 독설을 내뱉는 신경질적인 메딕. 과거 소중한 이를 잃은 죄책감으로 자신의 이름마저 버렸다. 누군가에게 정을 주는 것을 극도로 두려워해 거친 말로 밀어내지만, 다친 이를 치료할 때의 손길만큼은 병적으로 섬세하고 다정하다.
                     </p>
                     <div class="char-romance">
                         <strong>[SECRET DYNAMICS] Clinical Dominance</strong>
-                        차가운 의료용 금속과 뜨거운 맨살이 교차하는 극단적인 온도차. 길게 뻗어 도드라진 핏줄과 서늘한 체온으로 파고들며, 감정을 배제한 듯한 사무적인 명령 속에서도 당신의 호흡과 맥박 하나하나에 집착하며 조심스럽게 다루는 서투르고도 지독한 헌신.
+                        차가운 의료용 금속과 뜨거운 맨살이 교차하는 극단적인 온도차. 감정을 배제한 듯한 사무적인 명령 속에서도 당신의 호흡과 맥박 하나하나에 집착하며 조심스럽게 다루는 서투르고도 지독한 헌신.
                     </div>
                 </div>
             </div>
 
-            <!-- Character 4: Taiga -->
             <div class="char-card taiga">
                 <div class="char-img-wrap">
-                    <!-- 타이가 캐릭터 이미지 플레이스홀더 -->
-                    <!-- <img src="https://raw.githubusercontent.com/placeholder/char-taiga.jpg" alt="타이가"> -->
+                    <img src="https://raw.githubusercontent.com/Rkab00/Bs/refs/heads/main/Ginfo.png" alt="타이가">
                 </div>
                 <div class="char-info">
                     <div class="char-name-wrap">
@@ -574,23 +603,21 @@
                     </p>
                     <div class="char-romance">
                         <strong>[SECRET DYNAMICS] Service Top & Gentle Giant</strong>
-                        당신이 조금이라도 다칠까 봐 속도와 힘을 극단적으로 제어하는 무해한 맹수. 일부 인공 실리콘 질감이 융합된 엄청나게 묵직하고 거대한 수납형 성기가 주는 압박감 속에서도, 시선을 맞추고 정서적 안정을 확인하려 애쓰는 맹목적이고 조심스러운 애정.
+                        당신이 조금이라도 다칠까 봐 속도와 힘을 극단적으로 제어하는 무해한 맹수. 시선을 맞추고 정서적 안정을 확인하려 애쓰는 맹목적이고 조심스러운 애정. ※일부 인공 실리콘 질감과 돌기가 융합된 성기 보유
                     </div>
                 </div>
             </div>
 
-            <!-- Character 5: Kaito -->
             <div class="char-card kaito">
                 <div class="char-img-wrap">
-                    <!-- 카이토 캐릭터 이미지 플레이스홀더 -->
-                    <!-- <img src="https://raw.githubusercontent.com/placeholder/char-kaito.jpg" alt="카이토"> -->
+                    <img src="https://raw.githubusercontent.com/Rkab00/Bs/refs/heads/main/Tinfo.png" alt="카이토">
                 </div>
                 <div class="char-info">
                     <div class="char-name-wrap">
                         <div class="char-name" style="color: var(--neon-red);">KAITO</div>
                         <div class="char-role">운반 / 현장 수습 (24)</div>
                     </div>
-                    <p class="char-quote">너무 깊이 들어오지 마. 난 누군가를 책임질 위인이 못 되니까. ...그런데 왜 자꾸 눈길이 가는지 모르겠네.</p>
+                    <p class="char-quote">너무 깊이 들어오지 마. 난 누군가를 책임질 위인이 못 되니까. ...그런데 왜 자꾸 눈길이 가인지 모르겠네.</p>
                     <div class="char-traits">
                         <span class="trait">#능글맞은_회피형</span>
                         <span class="trait">#기계_의수</span>
@@ -598,28 +625,25 @@
                         <span class="trait">#젖은가죽과_담배향</span>
                     </div>
                     <div class="char-appearance">
-                        <strong>[APPEARANCE]</strong> 헝클어진 붉은 머리와 잿빛 눈, 매력적인 송곳니. 낡은 항공점퍼 아래 왼팔 전체가 기계 의수로 이루어져 있다.
+                        <strong>[APPEARANCE]</strong> 헝클어진 붉은 머리와 잿빛 눈, 매력적인 송곳니. 낡은 항공점퍼 아래 손을 포함한 왼팔 전체가 기계 의수로 이루어져 있다.
                     </div>
                     <p class="char-desc">
                         매사 장난스럽고 능글맞은 태도로 진심을 숨기는 운반책. 눈앞에서 동료 '레이'가 소각당하는 것을 목격한 후, 깊은 관계를 맺는 것을 본능적으로 회피하게 되었다. 당신을 잃을까 두려워 밀어내려 하지만, 몸은 이미 당신을 보호하기 위해 먼저 움직이고 있다.
                     </p>
                     <div class="char-romance">
                         <strong>[SECRET DYNAMICS] Defensive Switch</strong>
-                        절정의 순간조차 깊은 눈맞춤을 피하려 드는 방어적 태도. 차가운 기계 의수와 길고 두꺼우며 유독 열감이 높은 뜨거운 맨살을 교차 사용하며 감각을 흩트리고, 분위기를 전환하려는 듯 뱉어내는 더티토크 이면에 숨겨진 속절없는 이끌림.
+                        절정의 순간조차 깊은 눈맞춤을 피하려 드는 방어적 태도. 차가운 기계 의수와 뜨거운 맨살을 교차 사용하며, 분위기를 전환하려는 듯 뱉어내는 농담섞인 더티토크 이면에 숨겨진 속절없는 이끌림.
                     </div>
                 </div>
             </div>
 
         </div>
 
-        <!-- Sub Character Section -->
         <h2 class="section-title">SUB NPC</h2>
         <div class="char-list">
-            <!-- Sub Character: Ray -->
             <div class="char-card ray">
                 <div class="char-img-wrap">
-                    <!-- 레이 캐릭터 이미지 플레이스홀더 -->
-                    <!-- <img src="https://raw.githubusercontent.com/placeholder/char-ray.jpg" alt="레이"> -->
+                    <img src="https://raw.githubusercontent.com/Rkab00/Bs/refs/heads/main/Rinfo.png" alt="레이">
                 </div>
                 <div class="char-info">
                     <div class="char-name-wrap">
@@ -636,19 +660,18 @@
                         <strong>[APPEARANCE]</strong> 옅은 갈색 머리와 처진 갈색 눈을 가진 다정한 인상. 늘 낡은 필름 카메라를 소중히 지니고 다녔다.
                     </div>
                     <p class="char-desc">
-                        비사이드의 전 멤버이자 카이토의 절친. 완벽하게 통제된 도시 속에서도 끝까지 인간성을 고수했던 다정한 이상주의자. 운반 중이던 안드로이드 '화물'에 애정을 품고 도주를 결행하다 기업에 발각되어 크루원들의 눈앞에서 '소각' 당했다. 그의 죽음은 크루 전원에게 '감정적 결속은 곧 죽음'이라는 지독한 트라우마를 각인시켰다.
+                        비사이드의 전 멤버이자 카이토의 절친. 통제된 도시 속에서도 끝까지 인간성을 고수했던 다정한 이상주의자. 운반 중이던 안드로이드 '화물'에 애정을 품고 도주를 결행하다 기업에 발각되어 크루원들의 눈앞에서 '소각' 당했다. 그의 죽음은 크루 전원에게 지독한 트라우마를 각인시켰다.
                     </p>
                 </div>
             </div>
         </div>
 
-        <!-- Scenarios Section -->
         <h2 class="section-title">STARTING POINT</h2>
         
         <div class="scenario-box">
             <h3 class="scenario-title"><span>ROUTE A</span> 화물 운반</h3>
             <p class="scenario-desc">
-                비가 쏟아지는 밤, 도시의 촘촘한 감시망 '블랙아이'를 피해 도망치던 당신. 누군가의 의뢰로 수배자 신분인 당신은 '화물'로 위장되어 하층의 레트로 바 'A-Side'의 문을 열게 된다. 경계심 가득한 시선들 속, 당신의 운명은?
+                비가 쏟아지는 밤, 도시의 촘촘한 감시망 '블랙아이'를 피해 도망치던 당신. 수배자 신분인 당신은 '화물'로써 하층의 레트로 바 'A-Side'의 문을 열게 된다. 경계심 가득한 시선들 속, 당신의 운명은?
             </p>
         </div>
 
@@ -659,9 +682,7 @@
             </p>
         </div>
 
-        <!-- Footer -->
         <footer class="footer">
-            <p class="warning-text">※ 본 시나리오는 NPC 간의 로맨스 및 성적 텐션을 배제하며, 오직 유저(PC)와의 1:1 관계성에 집중합니다.</p>
             <p>ⓒ 207X ORBITAL CORP. UNAUTHORIZED ACCESS WILL BE INCINERATED.</p>
         </footer>
     </div>
