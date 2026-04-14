@@ -51,11 +51,11 @@
             overflow: hidden;
         }
 
-        /* --- Hero Section (배경 위 타이틀 배치 및 아날로그 효과) --- */
+        /* --- Hero Section --- */
         .hero {
             position: relative;
             width: 100%;
-            aspect-ratio: 3 / 2; /* 3:2 가로 사이즈 유지 */
+            aspect-ratio: 3 / 2;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -63,7 +63,6 @@
             border-bottom: 2px solid var(--neon-blue);
         }
 
-        /* 아날로그 티비 배경 효과 */
         .hero-screen-bg {
             position: absolute;
             top: 0;
@@ -73,11 +72,10 @@
             background-image: url('https://raw.githubusercontent.com/Rkab00/Bs/refs/heads/main/BG.png');
             background-size: cover;
             background-position: center;
-            filter: blur(6px) brightness(0.6) contrast(1.2); /* 뿌옇고 흐릿한 효과 */
+            filter: blur(6px) brightness(0.6) contrast(1.2);
             z-index: 1;
         }
 
-        /* 주사선 및 노이즈 오버레이 */
         .hero-screen-bg::after {
             content: "";
             position: absolute;
@@ -92,7 +90,6 @@
             pointer-events: none;
         }
 
-        /* 배경 위로 올라올 텍스트 컨텐츠 */
         .hero-content {
             position: relative;
             z-index: 3;
@@ -103,35 +100,34 @@
         .hero-subtitle {
             font-family: 'Orbitron', sans-serif;
             color: var(--neon-blue);
-            letter-spacing: 5px;
-            font-size: 0.9rem;
-            margin-bottom: 15px;
+            letter-spacing: 4px;
+            font-size: 0.8rem;
+            margin-bottom: 12px;
             text-shadow: 0 0 10px rgba(0, 243, 255, 1);
         }
 
         .hero-title {
-            font-size: 3.5rem;
+            font-size: 2.2rem;
             font-weight: 900;
-            line-height: 1.1;
-            margin-bottom: 20px;
+            line-height: 1.15;
+            margin-bottom: 15px;
             color: #fff;
-            text-shadow: 3px 3px 0px var(--neon-red), -3px -3px 0px var(--neon-blue), 0 0 20px rgba(0,0,0,0.8);
+            text-shadow: 2px 2px 0px var(--neon-red), -2px -2px 0px var(--neon-blue), 0 0 15px rgba(0,0,0,0.8);
         }
 
         .hero-desc {
-            font-size: 1.05rem;
+            font-size: 0.95rem;
             color: #fff;
             font-weight: 500;
             text-shadow: 0 0 10px rgba(0,0,0,1);
         }
-        /* -------------------------------------------------- */
 
         /* Section Title */
         .section-title {
             font-family: 'Orbitron', sans-serif;
-            font-size: 1.8rem;
+            font-size: 1.5rem;
             text-align: center;
-            margin: 60px 0 30px;
+            margin: 50px 0 25px;
             color: #fff;
             position: relative;
         }
@@ -139,7 +135,7 @@
         .section-title::before {
             content: '';
             display: block;
-            width: 40px;
+            width: 30px;
             height: 3px;
             background: var(--neon-blue);
             margin: 0 auto 10px;
@@ -150,8 +146,8 @@
         .world-box {
             background: var(--card-bg);
             border: 1px solid rgba(0, 243, 255, 0.2);
-            margin: 0 20px 40px;
-            padding: 30px;
+            margin: 0 15px 30px;
+            padding: 25px 20px;
             border-radius: 4px;
             position: relative;
         }
@@ -162,16 +158,17 @@
             top: -10px;
             left: 20px;
             background: var(--bg-color);
-            padding: 0 10px;
+            padding: 0 8px;
             font-family: 'Orbitron', sans-serif;
-            font-size: 0.8rem;
+            font-size: 0.75rem;
             color: var(--neon-blue);
         }
 
         .world-text {
             text-align: center;
-            font-size: 1.1rem;
-            margin-bottom: 30px;
+            font-size: 0.95rem;
+            margin-bottom: 25px;
+            line-height: 1.6;
         }
         
         .world-details {
@@ -181,28 +178,28 @@
         }
 
         .detail-group {
-            margin-bottom: 25px;
+            margin-bottom: 20px;
         }
 
         .detail-group h4 {
             font-family: 'Orbitron', sans-serif;
             color: var(--neon-blue);
-            margin-bottom: 15px;
-            font-size: 1rem;
+            margin-bottom: 12px;
+            font-size: 0.95rem;
             letter-spacing: 1px;
         }
 
         .detail-group dl {
             display: grid;
             grid-template-columns: 1fr;
-            gap: 15px;
+            gap: 12px;
         }
 
         .detail-group dt {
             color: #fff;
             font-weight: 700;
-            font-size: 0.95rem;
-            margin-bottom: 5px;
+            font-size: 0.9rem;
+            margin-bottom: 4px;
             display: flex;
             align-items: center;
         }
@@ -210,14 +207,14 @@
         .detail-group dt::before {
             content: '▶';
             color: var(--neon-red);
-            font-size: 0.7rem;
-            margin-right: 8px;
+            font-size: 0.65rem;
+            margin-right: 6px;
         }
 
         .detail-group dd {
             color: var(--text-muted);
-            font-size: 0.95rem;
-            margin-left: 15px;
+            font-size: 0.9rem;
+            margin-left: 12px;
             line-height: 1.5;
         }
 
@@ -225,18 +222,18 @@
             display: flex;
             flex-wrap: wrap;
             justify-content: center;
-            gap: 8px;
-            margin-top: 20px;
+            gap: 6px;
+            margin-top: 15px;
             border-top: 1px dashed var(--border-color);
-            padding-top: 20px;
+            padding-top: 15px;
         }
 
         .tag {
             background: rgba(255, 255, 255, 0.05);
             border: 1px solid var(--border-color);
-            padding: 4px 12px;
-            font-size: 0.85rem;
-            border-radius: 20px;
+            padding: 3px 10px;
+            font-size: 0.8rem;
+            border-radius: 15px;
             color: var(--text-muted);
         }
 
@@ -248,13 +245,13 @@
 
         /* Character List */
         .char-list {
-            padding: 0 20px;
+            padding: 0 15px;
         }
 
         .char-card {
             background: var(--card-bg);
-            border-left: 4px solid var(--neon-blue);
-            margin-bottom: 40px;
+            border-left: 3px solid var(--neon-blue);
+            margin-bottom: 30px;
             display: flex;
             flex-direction: column;
             position: relative;
@@ -285,35 +282,35 @@
         }
 
         .char-info {
-            padding: 25px;
+            padding: 20px;
         }
 
         .char-name-wrap {
             display: flex;
             justify-content: space-between;
             align-items: baseline;
-            margin-bottom: 15px;
+            margin-bottom: 12px;
             border-bottom: 1px solid rgba(255,255,255,0.1);
-            padding-bottom: 10px;
+            padding-bottom: 8px;
         }
 
         .char-name {
-            font-size: 2rem;
+            font-size: 1.6rem;
             font-weight: 900;
             font-family: 'Orbitron', sans-serif;
-            letter-spacing: 2px;
+            letter-spacing: 1.5px;
         }
 
         .char-role {
-            font-size: 0.9rem;
+            font-size: 0.8rem;
             color: var(--text-muted);
         }
 
         .char-quote {
-            font-size: 1.15rem;
+            font-size: 1rem;
             font-style: italic;
             color: #fff;
-            margin-bottom: 20px;
+            margin-bottom: 15px;
             line-height: 1.4;
         }
 
@@ -323,19 +320,19 @@
         }
         
         .char-appearance {
-            font-size: 0.95rem;
+            font-size: 0.9rem;
             color: var(--text-main);
             background: rgba(255,255,255,0.03);
-            padding: 12px;
+            padding: 10px;
             border-radius: 4px;
-            margin-bottom: 15px;
+            margin-bottom: 12px;
             border-left: 2px solid rgba(255,255,255,0.2);
         }
         
         .char-appearance strong {
             font-family: 'Orbitron', sans-serif;
             color: var(--text-muted);
-            font-size: 0.8rem;
+            font-size: 0.75rem;
             display: block;
             margin-bottom: 4px;
         }
@@ -343,45 +340,45 @@
         .char-traits {
             display: flex;
             flex-wrap: wrap;
-            gap: 6px;
-            margin-bottom: 15px;
+            gap: 5px;
+            margin-bottom: 12px;
         }
 
         .trait {
-            font-size: 0.8rem;
-            padding: 3px 8px;
+            font-size: 0.75rem;
+            padding: 3px 6px;
             background: rgba(255,255,255,0.1);
             border-radius: 2px;
         }
 
         .char-desc {
-            font-size: 1.0rem;
+            font-size: 0.95rem;
             color: var(--text-muted);
             margin-bottom: 15px;
         }
 
         .char-romance {
             background: rgba(0,0,0,0.5);
-            padding: 15px;
+            padding: 12px;
             border-left: 2px solid var(--neon-red);
-            font-size: 0.95rem;
+            font-size: 0.9rem;
         }
 
         .char-romance strong {
             color: var(--neon-red);
             display: block;
-            margin-bottom: 5px;
+            margin-bottom: 4px;
             font-family: 'Orbitron', sans-serif;
-            font-size: 0.8rem;
+            font-size: 0.75rem;
             letter-spacing: 1px;
         }
 
         /* Scenarios */
         .scenario-box {
-            margin: 0 20px 20px;
+            margin: 0 15px 15px;
             border: 1px solid rgba(255,255,255,0.1);
             background: linear-gradient(135deg, rgba(255,255,255,0.02) 0%, rgba(255,255,255,0) 100%);
-            padding: 25px;
+            padding: 20px;
             position: relative;
         }
 
@@ -389,25 +386,25 @@
             content: 'ROUTE SELECT';
             position: absolute;
             top: -10px;
-            right: 20px;
+            right: 15px;
             background: var(--bg-color);
-            padding: 0 10px;
+            padding: 0 8px;
             font-family: 'Orbitron', sans-serif;
-            font-size: 0.8rem;
+            font-size: 0.75rem;
             color: var(--text-muted);
         }
 
         .scenario-title {
-            font-size: 1.3rem;
+            font-size: 1.15rem;
             color: #fff;
-            margin-bottom: 15px;
+            margin-bottom: 12px;
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 8px;
         }
 
         .scenario-title span {
-            font-size: 0.8rem;
+            font-size: 0.75rem;
             background: var(--neon-blue);
             color: #000;
             padding: 2px 6px;
@@ -416,23 +413,18 @@
         }
 
         .scenario-desc {
-            font-size: 1.0rem;
+            font-size: 0.95rem;
             color: var(--text-muted);
         }
 
         /* Footer */
         .footer {
             text-align: center;
-            padding: 40px 20px;
-            margin-top: 40px;
+            padding: 30px 15px;
+            margin-top: 30px;
             border-top: 1px solid rgba(255,255,255,0.1);
-            font-size: 0.8rem;
+            font-size: 0.75rem;
             color: var(--text-muted);
-        }
-        
-        .warning-text {
-            color: var(--neon-red);
-            margin-bottom: 10px;
         }
     </style>
 </head>
