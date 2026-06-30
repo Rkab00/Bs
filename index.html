@@ -434,6 +434,174 @@
             color: var(--neon-red);
             margin-bottom: 10px;
         }
+        /* --- Font Size & Clean Line Break Adjustment --- */
+
+/* 기본 텍스트 안정화 */
+body {
+    font-size: 15px;
+}
+
+/* 히어로 영역 */
+.hero-subtitle {
+    font-size: clamp(0.65rem, 2.4vw, 0.85rem);
+    letter-spacing: 3px;
+}
+
+.hero-title {
+    font-size: clamp(2.2rem, 9vw, 3.3rem);
+    line-height: 1.05;
+}
+
+.hero-desc {
+    font-size: clamp(0.9rem, 3.2vw, 1.05rem);
+    line-height: 1.5;
+}
+
+/* 섹션 제목 */
+.section-title {
+    font-size: clamp(1.35rem, 5vw, 1.7rem);
+    margin: 48px 0 24px;
+}
+
+/* 세계관 본문 */
+.world-text {
+    font-size: clamp(0.9rem, 2.7vw, 1.02rem);
+    line-height: 1.8;
+    text-align: left;
+}
+
+.world-box {
+    padding: 26px 22px;
+}
+
+/* 상세 설명 */
+.detail-group h4 {
+    font-size: clamp(0.85rem, 2.8vw, 0.95rem);
+}
+
+.detail-group dt {
+    font-size: clamp(0.86rem, 2.8vw, 0.95rem);
+}
+
+.detail-group dd {
+    font-size: clamp(0.86rem, 2.8vw, 0.96rem);
+    line-height: 1.7;
+}
+
+/* 구역 카드 내부 문단 */
+.detail-group p {
+    font-size: clamp(0.84rem, 2.8vw, 0.94rem) !important;
+    line-height: 1.7 !important;
+}
+
+/* 감정 프로토콜 박스 */
+.detail-group span {
+    line-height: 1.5;
+}
+
+/* 캐릭터 카드 */
+.char-info {
+    padding: 22px;
+}
+
+.char-name {
+    font-size: clamp(1.45rem, 6vw, 1.85rem);
+    letter-spacing: 1px;
+}
+
+.char-role {
+    font-size: clamp(0.72rem, 2.6vw, 0.85rem);
+    white-space: nowrap;
+}
+
+.char-quote {
+    font-size: clamp(0.92rem, 3vw, 1.05rem);
+    line-height: 1.55;
+}
+
+.char-appearance {
+    font-size: clamp(0.86rem, 2.8vw, 0.96rem);
+    line-height: 1.65;
+}
+
+.char-desc {
+    font-size: clamp(0.88rem, 2.8vw, 0.98rem);
+    line-height: 1.7;
+}
+
+.char-romance {
+    font-size: clamp(0.84rem, 2.7vw, 0.94rem);
+    line-height: 1.65;
+}
+
+.trait {
+    font-size: 0.68rem;
+}
+
+/* 시나리오 */
+.scenario-title {
+    font-size: clamp(1rem, 3.5vw, 1.15rem);
+    line-height: 1.45;
+}
+
+.scenario-desc {
+    font-size: clamp(0.9rem, 3vw, 1rem);
+    line-height: 1.75;
+}
+
+/* 태그 */
+.tag {
+    font-size: 0.78rem;
+}
+
+/* 모바일 최적화 */
+@media (max-width: 480px) {
+    .container {
+        width: 100%;
+        border-left: none;
+        border-right: none;
+    }
+
+    .world-box,
+    .scenario-box {
+        margin-left: 14px;
+        margin-right: 14px;
+    }
+
+    .world-box {
+        padding: 24px 18px;
+    }
+
+    .char-list {
+        padding: 0 14px;
+    }
+
+    .char-info {
+        padding: 20px 18px;
+    }
+
+    .char-name-wrap {
+        align-items: flex-start;
+        gap: 6px;
+    }
+
+    .char-name {
+        font-size: 1.45rem;
+    }
+
+    .char-role {
+        font-size: 0.72rem;
+        padding-top: 4px;
+    }
+
+    .detail-group dd {
+        margin-left: 8px;
+    }
+
+    .scenario-box {
+        padding: 22px 18px;
+    }
+}
     </style>
 </head>
 <body>
