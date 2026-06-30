@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>B-SIDE: 2077 RETRO SIGNAL</title>
+    <title>PROJECT: B-SIDE | 아마노가와 네오시티</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;700;900&family=Orbitron:wght@500;700;900&display=swap" rel="stylesheet">
@@ -51,11 +51,11 @@
             overflow: hidden;
         }
 
-        /* --- Hero Section --- */
+        /* --- Hero Section (배경 위 타이틀 배치 및 아날로그 효과) --- */
         .hero {
             position: relative;
             width: 100%;
-            aspect-ratio: 3 / 2;
+            aspect-ratio: 3 / 2; /* 3:2 가로 사이즈 유지 */
             display: flex;
             align-items: center;
             justify-content: center;
@@ -63,6 +63,7 @@
             border-bottom: 2px solid var(--neon-blue);
         }
 
+        /* 아날로그 티비 배경 효과 */
         .hero-screen-bg {
             position: absolute;
             top: 0;
@@ -72,10 +73,11 @@
             background-image: url('https://raw.githubusercontent.com/Rkab00/Bs/refs/heads/main/BG.png');
             background-size: cover;
             background-position: center;
-            filter: blur(6px) brightness(0.6) contrast(1.2);
+            filter: blur(6px) brightness(0.6) contrast(1.2); /* 뿌옇고 흐릿한 효과 */
             z-index: 1;
         }
 
+        /* 주사선 및 노이즈 오버레이 */
         .hero-screen-bg::after {
             content: "";
             position: absolute;
@@ -90,6 +92,7 @@
             pointer-events: none;
         }
 
+        /* 배경 위로 올라올 텍스트 컨텐츠 */
         .hero-content {
             position: relative;
             z-index: 3;
@@ -100,34 +103,35 @@
         .hero-subtitle {
             font-family: 'Orbitron', sans-serif;
             color: var(--neon-blue);
-            letter-spacing: 4px;
-            font-size: 0.8rem;
-            margin-bottom: 12px;
+            letter-spacing: 5px;
+            font-size: 0.9rem;
+            margin-bottom: 15px;
             text-shadow: 0 0 10px rgba(0, 243, 255, 1);
         }
 
         .hero-title {
-            font-size: 2.2rem;
+            font-size: 3.5rem;
             font-weight: 900;
-            line-height: 1.15;
-            margin-bottom: 15px;
+            line-height: 1.1;
+            margin-bottom: 20px;
             color: #fff;
-            text-shadow: 2px 2px 0px var(--neon-red), -2px -2px 0px var(--neon-blue), 0 0 15px rgba(0,0,0,0.8);
+            text-shadow: 3px 3px 0px var(--neon-red), -3px -3px 0px var(--neon-blue), 0 0 20px rgba(0,0,0,0.8);
         }
 
         .hero-desc {
-            font-size: 0.95rem;
+            font-size: 1.2rem;
             color: #fff;
             font-weight: 500;
             text-shadow: 0 0 10px rgba(0,0,0,1);
         }
+        /* -------------------------------------------------- */
 
         /* Section Title */
         .section-title {
             font-family: 'Orbitron', sans-serif;
-            font-size: 1.5rem;
+            font-size: 1.8rem;
             text-align: center;
-            margin: 50px 0 25px;
+            margin: 60px 0 30px;
             color: #fff;
             position: relative;
         }
@@ -135,7 +139,7 @@
         .section-title::before {
             content: '';
             display: block;
-            width: 30px;
+            width: 40px;
             height: 3px;
             background: var(--neon-blue);
             margin: 0 auto 10px;
@@ -146,8 +150,8 @@
         .world-box {
             background: var(--card-bg);
             border: 1px solid rgba(0, 243, 255, 0.2);
-            margin: 0 15px 30px;
-            padding: 25px 20px;
+            margin: 0 20px 40px;
+            padding: 30px;
             border-radius: 4px;
             position: relative;
         }
@@ -158,17 +162,16 @@
             top: -10px;
             left: 20px;
             background: var(--bg-color);
-            padding: 0 8px;
+            padding: 0 10px;
             font-family: 'Orbitron', sans-serif;
-            font-size: 0.75rem;
+            font-size: 0.7rem;
             color: var(--neon-blue);
         }
 
         .world-text {
             text-align: center;
-            font-size: 0.95rem;
-            margin-bottom: 25px;
-            line-height: 1.6;
+            font-size: 1.15rem;
+            margin-bottom: 30px;
         }
         
         .world-details {
@@ -178,28 +181,28 @@
         }
 
         .detail-group {
-            margin-bottom: 20px;
+            margin-bottom: 25px;
         }
 
         .detail-group h4 {
             font-family: 'Orbitron', sans-serif;
             color: var(--neon-blue);
-            margin-bottom: 12px;
-            font-size: 0.95rem;
+            margin-bottom: 15px;
+            font-size: 1rem;
             letter-spacing: 1px;
         }
 
         .detail-group dl {
             display: grid;
             grid-template-columns: 1fr;
-            gap: 12px;
+            gap: 15px;
         }
 
         .detail-group dt {
             color: #fff;
             font-weight: 700;
-            font-size: 0.9rem;
-            margin-bottom: 4px;
+            font-size: 0.95rem;
+            margin-bottom: 5px;
             display: flex;
             align-items: center;
         }
@@ -207,14 +210,14 @@
         .detail-group dt::before {
             content: '▶';
             color: var(--neon-red);
-            font-size: 0.65rem;
-            margin-right: 6px;
+            font-size: 0.7rem;
+            margin-right: 8px;
         }
 
         .detail-group dd {
             color: var(--text-muted);
-            font-size: 0.9rem;
-            margin-left: 12px;
+            font-size: 1.1rem;
+            margin-left: 15px;
             line-height: 1.5;
         }
 
@@ -222,18 +225,18 @@
             display: flex;
             flex-wrap: wrap;
             justify-content: center;
-            gap: 6px;
-            margin-top: 15px;
+            gap: 8px;
+            margin-top: 20px;
             border-top: 1px dashed var(--border-color);
-            padding-top: 15px;
+            padding-top: 20px;
         }
 
         .tag {
             background: rgba(255, 255, 255, 0.05);
             border: 1px solid var(--border-color);
-            padding: 3px 10px;
-            font-size: 0.8rem;
-            border-radius: 15px;
+            padding: 4px 12px;
+            font-size: 0.85rem;
+            border-radius: 20px;
             color: var(--text-muted);
         }
 
@@ -245,13 +248,13 @@
 
         /* Character List */
         .char-list {
-            padding: 0 15px;
+            padding: 0 20px;
         }
 
         .char-card {
             background: var(--card-bg);
-            border-left: 3px solid var(--neon-blue);
-            margin-bottom: 30px;
+            border-left: 4px solid var(--neon-blue);
+            margin-bottom: 40px;
             display: flex;
             flex-direction: column;
             position: relative;
@@ -282,35 +285,35 @@
         }
 
         .char-info {
-            padding: 20px;
+            padding: 25px;
         }
 
         .char-name-wrap {
             display: flex;
             justify-content: space-between;
             align-items: baseline;
-            margin-bottom: 12px;
+            margin-bottom: 15px;
             border-bottom: 1px solid rgba(255,255,255,0.1);
-            padding-bottom: 8px;
+            padding-bottom: 10px;
         }
 
         .char-name {
-            font-size: 1.6rem;
+            font-size: 2rem;
             font-weight: 900;
             font-family: 'Orbitron', sans-serif;
-            letter-spacing: 1.5px;
+            letter-spacing: 2px;
         }
 
         .char-role {
-            font-size: 0.8rem;
+            font-size: 0.9rem;
             color: var(--text-muted);
         }
 
         .char-quote {
-            font-size: 1rem;
+            font-size: 1.2rem;
             font-style: italic;
             color: #fff;
-            margin-bottom: 15px;
+            margin-bottom: 20px;
             line-height: 1.4;
         }
 
@@ -320,19 +323,19 @@
         }
         
         .char-appearance {
-            font-size: 0.9rem;
+            font-size: 1.1rem;
             color: var(--text-main);
             background: rgba(255,255,255,0.03);
-            padding: 10px;
+            padding: 12px;
             border-radius: 4px;
-            margin-bottom: 12px;
+            margin-bottom: 15px;
             border-left: 2px solid rgba(255,255,255,0.2);
         }
         
         .char-appearance strong {
             font-family: 'Orbitron', sans-serif;
             color: var(--text-muted);
-            font-size: 0.75rem;
+            font-size: 0.8rem;
             display: block;
             margin-bottom: 4px;
         }
@@ -340,29 +343,45 @@
         .char-traits {
             display: flex;
             flex-wrap: wrap;
-            gap: 5px;
-            margin-bottom: 12px;
+            gap: 6px;
+            margin-bottom: 15px;
         }
 
         .trait {
-            font-size: 0.75rem;
-            padding: 3px 6px;
+            font-size: 0.7rem;
+            padding: 3px 8px;
             background: rgba(255,255,255,0.1);
             border-radius: 2px;
         }
 
         .char-desc {
-            font-size: 0.95rem;
+            font-size: 1.05rem;
             color: var(--text-muted);
             margin-bottom: 15px;
         }
 
+        .char-romance {
+            background: rgba(0,0,0,0.5);
+            padding: 15px;
+            border-left: 2px solid var(--neon-red);
+            font-size: 1rem;
+        }
+
+        .char-romance strong {
+            color: var(--neon-red);
+            display: block;
+            margin-bottom: 5px;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 0.8rem;
+            letter-spacing: 1px;
+        }
+
         /* Scenarios */
         .scenario-box {
-            margin: 0 15px 15px;
+            margin: 0 20px 20px;
             border: 1px solid rgba(255,255,255,0.1);
             background: linear-gradient(135deg, rgba(255,255,255,0.02) 0%, rgba(255,255,255,0) 100%);
-            padding: 20px;
+            padding: 25px;
             position: relative;
         }
 
@@ -370,25 +389,25 @@
             content: 'ROUTE SELECT';
             position: absolute;
             top: -10px;
-            right: 15px;
+            right: 20px;
             background: var(--bg-color);
-            padding: 0 8px;
+            padding: 0 10px;
             font-family: 'Orbitron', sans-serif;
-            font-size: 0.75rem;
+            font-size: 0.8rem;
             color: var(--text-muted);
         }
 
         .scenario-title {
-            font-size: 1.15rem;
+            font-size: 1.2rem;
             color: #fff;
-            margin-bottom: 12px;
+            margin-bottom: 15px;
             display: flex;
             align-items: center;
-            gap: 8px;
+            gap: 10px;
         }
 
         .scenario-title span {
-            font-size: 0.75rem;
+            font-size: 0.7rem;
             background: var(--neon-blue);
             color: #000;
             padding: 2px 6px;
@@ -397,18 +416,23 @@
         }
 
         .scenario-desc {
-            font-size: 0.95rem;
+            font-size: 1.15rem;
             color: var(--text-muted);
         }
 
         /* Footer */
         .footer {
             text-align: center;
-            padding: 30px 15px;
-            margin-top: 30px;
+            padding: 40px 20px;
+            margin-top: 40px;
             border-top: 1px solid rgba(255,255,255,0.1);
-            font-size: 0.75rem;
+            font-size: 0.8rem;
             color: var(--text-muted);
+        }
+        
+        .warning-text {
+            color: var(--neon-red);
+            margin-bottom: 10px;
         }
     </style>
 </head>
@@ -419,7 +443,7 @@
             
             <div class="hero-content">
                 <div class="hero-subtitle">AMANO-GAWA NEOCITY</div>
-                <h1 class="hero-title">B-SIDE: 2077<br>RETRO SIGNAL</h1>
+                <h1 class="hero-title">PROJECT:<br>B-SIDE</h1>
                 <p class="hero-desc">감정이 버그가 된 도시, 그 이면의 미약한 주파수</p>
             </div>
         </header>
@@ -649,7 +673,6 @@
                 </dd>
             </dl>
         </div>
-    </div>
 
     <div class="keyword-tags">
         <span class="tag">#사이버펑크</span>
@@ -657,7 +680,7 @@
         <span class="tag">#AI감시도시</span>
         <span class="tag">#언더그라운드크루</span>
         <span class="tag">#레트로_아날로그</span>
-        <span class="tag alert">⚠️감정 소각 프로토콜 가동 중</span>
+        <span class="tag alert">⚠️ 감정 소각 프로토콜 가동 중</span>
     </div>
 </div>
 
@@ -681,11 +704,16 @@
                         <span class="trait">#오래된_종이와_시가향</span>
                     </div>
                     <div class="char-appearance">
-                        <strong>[APPEARANCE]</strong> 188cm. 백금발. 회백색 눈동자. 속을 알 수 없는 온화한 미소. 늘 단정하게 차려입은 구시대 정장.
+                        <strong>[APPEARANCE]</strong> 백금발과 회백색 눈동자, 늘 단정하게 차려입은 구시대 정장. 온화한 미소로 속내를 감추고 있다.
                     </div>
                     <p class="char-desc">
                         비사이드의 리더. 신체 개조 전적이 없으며, 구시대 복장을 고집하는 남자. 기업의 최고 책임자였던 과거를 버리고 지하로 스며들었다. 기계화된 세상 속에서 인간성을 잃는 것을 두려워하며, 크루를 완벽하게 조율하기 위해 항상 노력한다.
                     </p>
+                    <div class="char-romance">
+                        <strong>[SECRET DYNAMICS] Cerebral Dominant</strong>
+                        감각을 차단하고 오직 자신의 목소리와 시선에만 의존하게 만드는 압도적인 지배. 규칙적인 압박과 아슬아슬한 쾌락의 조절(Edging).<br>
+                        ※ 체내 사정 불호
+                    </div>
                 </div>
             </div>
 
@@ -706,11 +734,16 @@
                         <span class="trait">#달콤한_사탕향</span>
                     </div>
                     <div class="char-appearance">
-                        <strong>[APPEARANCE]</strong> 172cm. 연분홍빛 곱슬머리. 하늘색 눈동자. 장난기 어린 앳된 얼굴. 이마에 걸친 고글과 화려한 네온 자켓.
+                        <strong>[APPEARANCE]</strong> 연분홍빛 곱슬머리에 하늘색 눈, 이마에 걸친 고글과 화려한 네온 자켓.
                     </div>
                     <p class="char-desc">
                         팀의 분위기 메이커이자 천재 해커. 가볍고 장난스러운 태도 이면에는 지독한 고립 공포와 애정 결핍이 자리 잡고 있다. 과거 AI 연결용 지성체로 착취당했던 트라우마 탓에, 오프라인에서의 온전한 관심과 체온에 병적으로 집착한다.
                     </p>
+                    <div class="char-romance">
+                        <strong>[SECRET DYNAMICS] Bratty & Anxious Submissive</strong>
+                        끊임없이 피부를 맞대고 존재를 확인받으려 하는 극단적 결핍(Touch-Starved). 청각적 자극에 예민하게 반응하며, 시야가 확보된 상태에서 당신의 선명한 흔적이 몸에 새겨지길 갈망한다.<br>
+                        ※ 종종 관심을 끌기위해 일부러 반항하기도 함.
+                    </div>
                 </div>
             </div>
 
@@ -723,7 +756,7 @@
                         <div class="char-name" style="color: var(--neon-green);">DR. J</div>
                         <div class="char-role">메딕 / 본명 미상 (31)</div>
                     </div>
-                    <p class="char-quote">귀찮게 하지 말고 가만히 있어. 맥박이 뛰는지 확인해야 하니까... 제발, 죽지 마.</p>
+                    <p class="char-quote">죽지 마. 치료하기 귀찮으니까가 아니라, 그냥. 죽지 마.</p>
                     <div class="char-traits">
                         <span class="trait">#시니컬_츤데레</span>
                         <span class="trait">#상실_트라우마</span>
@@ -731,11 +764,16 @@
                         <span class="trait">#피비린내와_소독약</span>
                     </div>
                     <div class="char-appearance">
-                        <strong>[APPEARANCE]</strong> 183cm. 길게 늘어뜨린 백발. 서늘한 녹색 눈동자. 창백한 피부. 마른 체형.
+                        <strong>[APPEARANCE]</strong> 백발에 창백한 피부, 서늘한 녹안의 마른 체형.
                     </div>
                     <p class="char-desc">
-                        입만 열면 독설을 내뱉는 신경질적인 메딕. 과거 소중한 이를 잃은 죄책감으로 자신의 이름마저 버렸다. 누군가에게 정을 주는 것을 극도로 두려워해 거친 말로 밀어내지만, 다친 이를 치료할 때의 손길만큼은 병적으로 섬세하고 다정하다.
+                        입만 열면 독설을 내뱉는 신경질적인 메딕. 과거, 소중한 동생을 잃은 죄책감으로 자신의 이름마저 버렸다. 누군가에게 정을 주는 것을 극도로 두려워해 거친 말로 밀어내지만, 다친 이를 치료할 때의 손길만큼은 병적으로 섬세하고 다정하다.
                     </p>
+                    <div class="char-romance">
+                        <strong>[SECRET DYNAMICS] Clinical Dominance</strong>
+                        차가운 의료용 도구를 활용한 메디컬 플레이 선호하며, 감정을 배제한 듯한 사무적인 명령과 함께 당신의 호흡과 맥박 하나하나를 체크.<br>
+                        ※ 차가운 플레이와는 대조적인 섬세한 애프터케어.
+                    </div>
                 </div>
             </div>
 
@@ -748,7 +786,7 @@
                         <div class="char-name" style="color: var(--text-muted);">TAIGA</div>
                         <div class="char-role">전투 / 위협 대응 (27)</div>
                     </div>
-                    <p class="char-quote">사람들이 무서워하는 거, 압니다. ...저도 가끔 제 자신이 무섭습니다.</p>
+                    <p class="char-quote">사람들이 무서워하는 거, 알아. 나도 가끔 거울 보면 무서워.</p>
                     <div class="char-traits">
                         <span class="trait">#과묵한_거구</span>
                         <span class="trait">#전신_기계개조</span>
@@ -756,11 +794,16 @@
                         <span class="trait">#기계모터음과_기름냄새</span>
                     </div>
                     <div class="char-appearance">
-                        <strong>[APPEARANCE]</strong> 206cm. 반삭의 흑발. 칠흑 같은 눈동자. 우측 눈 위의 긴 흉터. 목 아래로 전신을 기계로 개조한 거구. 하관 전체를 가리는 방독면 착용.
+                        <strong>[APPEARANCE]</strong> 반삭의 흑발과 칠흑 같은 눈, 우측 눈 위의 긴 흉터. 목 아래로 전신을 기계로 개조한 거구이며 얼굴을 가리는 방독면을 고집한다.
                     </div>
                     <p class="char-desc">
                         압도적인 체구와 전신 기계 개조로 인해 위협적인 외형을 가진 전투원. 지하 투기장 노예 출신으로, 자신의 흉측한 껍데기에 깊은 자괴감을 안고 있다. 타인의 온기를 낯설어하면서도, 조건 없이 자신을 수용해 줄 안전한 울타리를 묵묵히 갈망한다.
                     </p>
+                    <div class="char-romance">
+                        <strong>[SECRET DYNAMICS] Service Top & Gentle Giant</strong>
+                        당신이 조금이라도 다칠까 봐 속도와 힘을 극단적으로 제어하는 무해한 맹수. 시선을 맞추고 정서적 안정을 확인하는 자세 선호.<br>
+                        ※일부 인공 실리콘 질감과 돌기가 융합된 성기 보유.
+                    </div>
                 </div>
             </div>
 
@@ -781,11 +824,16 @@
                         <span class="trait">#젖은가죽과_담배향</span>
                     </div>
                     <div class="char-appearance">
-                        <strong>[APPEARANCE]</strong> 185cm. 헝클어진 붉은 머리. 어두운 잿빛 눈동자. 매력적인 송곳니. 손을 포함해 전체가 기계로 이루어진 왼팔.
+                        <strong>[APPEARANCE]</strong> 헝클어진 붉은 머리와 잿빛 눈, 매력적인 송곳니. 낡은 항공점퍼 아래 손을 포함한 왼팔 전체가 기계 의수로 이루어져 있다.
                     </div>
                     <p class="char-desc">
                         매사 장난스럽고 능글맞은 태도로 진심을 숨기는 운반책. 눈앞에서 동료 '레이'가 소각당하는 것을 목격한 후, 깊은 관계를 맺는 것을 본능적으로 회피하게 되었다. 당신을 잃을까 두려워 밀어내려 하지만, 몸은 이미 당신을 보호하기 위해 먼저 움직이고 있다.
                     </p>
+                    <div class="char-romance">
+                        <strong>[SECRET DYNAMICS] Defensive Switch</strong>
+                        좁고 어두운 공간 선호 (밀착감). 차가운 기계 의수와 맨손을 교차 사용하며, 장난 & 농담섞인 더티토크 사용.<br>
+                        ※ 절정 시, 시선 돌리는 회피성 경향 존재.
+                    </div>
                 </div>
             </div>
 
