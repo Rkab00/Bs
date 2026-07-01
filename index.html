@@ -32,18 +32,21 @@
             background-color: var(--bg-color);
             color: var(--text-main);
             font-family: 'Noto Sans KR', sans-serif;
+            font-size: 15px;
             line-height: 1.6;
             background-image: 
                 linear-gradient(rgba(5, 5, 7, 0.9), rgba(5, 5, 7, 0.9)),
                 url('https://raw.githubusercontent.com/Rkab00/Bs/refs/heads/main/BG.png');
             background-size: cover;
-            background-attachment: fixed;
+            background-position: center;
+            background-attachment: scroll;
         }
 
         .container {
             max-width: 720px;
             margin: 0 auto;
-            background: rgba(0, 0, 0, 0.4);
+            background: rgba(0, 0, 0, 0.52);
+            -webkit-backdrop-filter: blur(10px);
             backdrop-filter: blur(10px);
             border-left: 1px solid var(--border-color);
             border-right: 1px solid var(--border-color);
@@ -51,51 +54,63 @@
             overflow: hidden;
         }
 
-        /* --- Hero Section (배경 위 타이틀 배치 및 아날로그 효과) --- */
+        /* --- Hero Section --- */
         .hero {
             position: relative;
             width: 100%;
-            aspect-ratio: 3 / 2; /* 3:2 가로 사이즈 유지 */
+            aspect-ratio: 3 / 2;
             display: flex;
             align-items: center;
             justify-content: center;
             overflow: hidden;
             border-bottom: 2px solid var(--neon-blue);
+            background: #050507;
         }
 
-        /* 아날로그 티비 배경 효과 */
+        /*
+            전체 페이지 캡처 안정형 헤더 배경
+            - filter: blur() 제거
+            - 어두운 오버레이 / 비네트 / 스캔라인으로 뿌연 화면 느낌 구현
+        */
         .hero-screen-bg {
             position: absolute;
-            top: 0;
-            left: 0;
+            inset: 0;
             width: 100%;
             height: 100%;
             background-image: url('https://raw.githubusercontent.com/Rkab00/Bs/refs/heads/main/BG.png');
             background-size: cover;
             background-position: center;
-            filter: blur(6px) brightness(0.6) contrast(1.2); /* 뿌옇고 흐릿한 효과 */
+            transform: scale(1.04);
+            opacity: 0.58;
             z-index: 1;
         }
 
-        /* 주사선 및 노이즈 오버레이 */
-        .hero-screen-bg::after {
+        .hero-screen-bg::before {
             content: "";
             position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.15) 50%), 
-                        linear-gradient(90deg, rgba(255, 0, 0, 0.05), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.05));
-            background-size: 100% 3px, 3px 100%;
+            inset: 0;
+            background:
+                radial-gradient(circle at center, rgba(0, 243, 255, 0.08), rgba(0, 0, 0, 0.62) 72%),
+                linear-gradient(rgba(5, 5, 7, 0.24), rgba(5, 5, 7, 0.64));
             z-index: 2;
             pointer-events: none;
         }
 
-        /* 배경 위로 올라올 텍스트 컨텐츠 */
+        .hero-screen-bg::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background:
+                linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.18) 50%),
+                linear-gradient(90deg, rgba(255, 0, 0, 0.05), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.05));
+            background-size: 100% 3px, 3px 100%;
+            z-index: 3;
+            pointer-events: none;
+        }
+
         .hero-content {
             position: relative;
-            z-index: 3;
+            z-index: 4;
             text-align: center;
             padding: 20px;
         }
@@ -103,35 +118,38 @@
         .hero-subtitle {
             font-family: 'Orbitron', sans-serif;
             color: var(--neon-blue);
-            letter-spacing: 5px;
-            font-size: 0.9rem;
+            letter-spacing: 3px;
+            font-size: clamp(0.65rem, 2.4vw, 0.85rem);
             margin-bottom: 15px;
             text-shadow: 0 0 10px rgba(0, 243, 255, 1);
         }
 
         .hero-title {
-            font-size: 3.5rem;
+            font-size: clamp(2.2rem, 9vw, 3.3rem);
             font-weight: 900;
-            line-height: 1.1;
+            line-height: 1.05;
             margin-bottom: 20px;
             color: #fff;
-            text-shadow: 3px 3px 0px var(--neon-red), -3px -3px 0px var(--neon-blue), 0 0 20px rgba(0,0,0,0.8);
+            text-shadow:
+                3px 3px 0px var(--neon-red),
+                -3px -3px 0px var(--neon-blue),
+                0 0 20px rgba(0, 0, 0, 0.8);
         }
 
         .hero-desc {
-            font-size: 1.2rem;
+            font-size: clamp(0.9rem, 3.2vw, 1.05rem);
+            line-height: 1.5;
             color: #fff;
             font-weight: 500;
-            text-shadow: 0 0 10px rgba(0,0,0,1);
+            text-shadow: 0 0 10px rgba(0, 0, 0, 1);
         }
-        /* -------------------------------------------------- */
 
         /* Section Title */
         .section-title {
             font-family: 'Orbitron', sans-serif;
-            font-size: 1.8rem;
+            font-size: clamp(1.35rem, 5vw, 1.7rem);
             text-align: center;
-            margin: 60px 0 30px;
+            margin: 48px 0 24px;
             color: #fff;
             position: relative;
         }
@@ -151,7 +169,7 @@
             background: var(--card-bg);
             border: 1px solid rgba(0, 243, 255, 0.2);
             margin: 0 20px 40px;
-            padding: 30px;
+            padding: 26px 22px;
             border-radius: 4px;
             position: relative;
         }
@@ -169,11 +187,12 @@
         }
 
         .world-text {
-            text-align: center;
-            font-size: 1.15rem;
+            text-align: left;
+            font-size: clamp(0.9rem, 2.7vw, 1.02rem);
+            line-height: 1.8;
             margin-bottom: 30px;
         }
-        
+
         .world-details {
             border-top: 1px dashed var(--border-color);
             padding-top: 20px;
@@ -188,7 +207,7 @@
             font-family: 'Orbitron', sans-serif;
             color: var(--neon-blue);
             margin-bottom: 15px;
-            font-size: 1rem;
+            font-size: clamp(0.85rem, 2.8vw, 0.95rem);
             letter-spacing: 1px;
         }
 
@@ -201,12 +220,12 @@
         .detail-group dt {
             color: #fff;
             font-weight: 700;
-            font-size: 0.95rem;
+            font-size: clamp(0.86rem, 2.8vw, 0.95rem);
             margin-bottom: 5px;
             display: flex;
             align-items: center;
         }
-        
+
         .detail-group dt::before {
             content: '▶';
             color: var(--neon-red);
@@ -216,8 +235,17 @@
 
         .detail-group dd {
             color: var(--text-muted);
-            font-size: 1.1rem;
+            font-size: clamp(0.86rem, 2.8vw, 0.96rem);
             margin-left: 15px;
+            line-height: 1.7;
+        }
+
+        .detail-group p {
+            font-size: clamp(0.84rem, 2.8vw, 0.94rem) !important;
+            line-height: 1.7 !important;
+        }
+
+        .detail-group span {
             line-height: 1.5;
         }
 
@@ -235,7 +263,7 @@
             background: rgba(255, 255, 255, 0.05);
             border: 1px solid var(--border-color);
             padding: 4px 12px;
-            font-size: 0.85rem;
+            font-size: 0.78rem;
             border-radius: 20px;
             color: var(--text-muted);
         }
@@ -285,7 +313,7 @@
         }
 
         .char-info {
-            padding: 25px;
+            padding: 22px;
         }
 
         .char-name-wrap {
@@ -298,32 +326,35 @@
         }
 
         .char-name {
-            font-size: 2rem;
+            font-size: clamp(1.45rem, 6vw, 1.85rem);
             font-weight: 900;
             font-family: 'Orbitron', sans-serif;
-            letter-spacing: 2px;
+            letter-spacing: 1px;
         }
 
         .char-role {
-            font-size: 0.9rem;
+            font-size: clamp(0.72rem, 2.6vw, 0.85rem);
             color: var(--text-muted);
+            white-space: nowrap;
         }
 
         .char-quote {
-            font-size: 1.2rem;
+            font-size: clamp(0.92rem, 3vw, 1.05rem);
             font-style: italic;
             color: #fff;
             margin-bottom: 20px;
-            line-height: 1.4;
+            line-height: 1.55;
         }
 
-        .char-quote::before, .char-quote::after {
+        .char-quote::before,
+        .char-quote::after {
             content: '"';
             color: var(--text-muted);
         }
-        
+
         .char-appearance {
-            font-size: 1.1rem;
+            font-size: clamp(0.86rem, 2.8vw, 0.96rem);
+            line-height: 1.65;
             color: var(--text-main);
             background: rgba(255,255,255,0.03);
             padding: 12px;
@@ -331,7 +362,7 @@
             margin-bottom: 15px;
             border-left: 2px solid rgba(255,255,255,0.2);
         }
-        
+
         .char-appearance strong {
             font-family: 'Orbitron', sans-serif;
             color: var(--text-muted);
@@ -348,14 +379,15 @@
         }
 
         .trait {
-            font-size: 0.7rem;
+            font-size: 0.68rem;
             padding: 3px 8px;
             background: rgba(255,255,255,0.1);
             border-radius: 2px;
         }
 
         .char-desc {
-            font-size: 1.05rem;
+            font-size: clamp(0.88rem, 2.8vw, 0.98rem);
+            line-height: 1.7;
             color: var(--text-muted);
             margin-bottom: 15px;
         }
@@ -364,7 +396,8 @@
             background: rgba(0,0,0,0.5);
             padding: 15px;
             border-left: 2px solid var(--neon-red);
-            font-size: 1rem;
+            font-size: clamp(0.84rem, 2.7vw, 0.94rem);
+            line-height: 1.65;
         }
 
         .char-romance strong {
@@ -398,7 +431,8 @@
         }
 
         .scenario-title {
-            font-size: 1.2rem;
+            font-size: clamp(1rem, 3.5vw, 1.15rem);
+            line-height: 1.45;
             color: #fff;
             margin-bottom: 15px;
             display: flex;
@@ -416,7 +450,8 @@
         }
 
         .scenario-desc {
-            font-size: 1.15rem;
+            font-size: clamp(0.9rem, 3vw, 1rem);
+            line-height: 1.75;
             color: var(--text-muted);
         }
 
@@ -429,461 +464,346 @@
             font-size: 0.8rem;
             color: var(--text-muted);
         }
-        
+
         .warning-text {
             color: var(--neon-red);
             margin-bottom: 10px;
         }
-        /* --- Font Size & Clean Line Break Adjustment --- */
 
-/* 기본 텍스트 안정화 */
-body {
-    font-size: 15px;
-}
+        /* 모바일 최적화 */
+        @media (max-width: 480px) {
+            .container {
+                width: 100%;
+                border-left: none;
+                border-right: none;
+            }
 
-/* 히어로 영역 */
-.hero-subtitle {
-    font-size: clamp(0.65rem, 2.4vw, 0.85rem);
-    letter-spacing: 3px;
-}
+            .world-box,
+            .scenario-box {
+                margin-left: 14px;
+                margin-right: 14px;
+            }
 
-.hero-title {
-    font-size: clamp(2.2rem, 9vw, 3.3rem);
-    line-height: 1.05;
-}
+            .world-box {
+                padding: 24px 18px;
+            }
 
-.hero-desc {
-    font-size: clamp(0.9rem, 3.2vw, 1.05rem);
-    line-height: 1.5;
-}
+            .char-list {
+                padding: 0 14px;
+            }
 
-/* 섹션 제목 */
-.section-title {
-    font-size: clamp(1.35rem, 5vw, 1.7rem);
-    margin: 48px 0 24px;
-}
+            .char-info {
+                padding: 20px 18px;
+            }
 
-/* 세계관 본문 */
-.world-text {
-    font-size: clamp(0.9rem, 2.7vw, 1.02rem);
-    line-height: 1.8;
-    text-align: left;
-}
+            .char-name-wrap {
+                align-items: flex-start;
+                gap: 6px;
+            }
 
-.world-box {
-    padding: 26px 22px;
-}
+            .char-name {
+                font-size: 1.45rem;
+            }
 
-/* 상세 설명 */
-.detail-group h4 {
-    font-size: clamp(0.85rem, 2.8vw, 0.95rem);
-}
+            .char-role {
+                font-size: 0.72rem;
+                padding-top: 4px;
+            }
 
-.detail-group dt {
-    font-size: clamp(0.86rem, 2.8vw, 0.95rem);
-}
+            .detail-group dd {
+                margin-left: 8px;
+            }
 
-.detail-group dd {
-    font-size: clamp(0.86rem, 2.8vw, 0.96rem);
-    line-height: 1.7;
-}
-
-/* 구역 카드 내부 문단 */
-.detail-group p {
-    font-size: clamp(0.84rem, 2.8vw, 0.94rem) !important;
-    line-height: 1.7 !important;
-}
-
-/* 감정 프로토콜 박스 */
-.detail-group span {
-    line-height: 1.5;
-}
-
-/* 캐릭터 카드 */
-.char-info {
-    padding: 22px;
-}
-
-.char-name {
-    font-size: clamp(1.45rem, 6vw, 1.85rem);
-    letter-spacing: 1px;
-}
-
-.char-role {
-    font-size: clamp(0.72rem, 2.6vw, 0.85rem);
-    white-space: nowrap;
-}
-
-.char-quote {
-    font-size: clamp(0.92rem, 3vw, 1.05rem);
-    line-height: 1.55;
-}
-
-.char-appearance {
-    font-size: clamp(0.86rem, 2.8vw, 0.96rem);
-    line-height: 1.65;
-}
-
-.char-desc {
-    font-size: clamp(0.88rem, 2.8vw, 0.98rem);
-    line-height: 1.7;
-}
-
-.char-romance {
-    font-size: clamp(0.84rem, 2.7vw, 0.94rem);
-    line-height: 1.65;
-}
-
-.trait {
-    font-size: 0.68rem;
-}
-
-/* 시나리오 */
-.scenario-title {
-    font-size: clamp(1rem, 3.5vw, 1.15rem);
-    line-height: 1.45;
-}
-
-.scenario-desc {
-    font-size: clamp(0.9rem, 3vw, 1rem);
-    line-height: 1.75;
-}
-
-/* 태그 */
-.tag {
-    font-size: 0.78rem;
-}
-
-/* 모바일 최적화 */
-@media (max-width: 480px) {
-    .container {
-        width: 100%;
-        border-left: none;
-        border-right: none;
-    }
-
-    .world-box,
-    .scenario-box {
-        margin-left: 14px;
-        margin-right: 14px;
-    }
-
-    .world-box {
-        padding: 24px 18px;
-    }
-
-    .char-list {
-        padding: 0 14px;
-    }
-
-    .char-info {
-        padding: 20px 18px;
-    }
-
-    .char-name-wrap {
-        align-items: flex-start;
-        gap: 6px;
-    }
-
-    .char-name {
-        font-size: 1.45rem;
-    }
-
-    .char-role {
-        font-size: 0.72rem;
-        padding-top: 4px;
-    }
-
-    .detail-group dd {
-        margin-left: 8px;
-    }
-
-    .scenario-box {
-        padding: 22px 18px;
-    }
-}
+            .scenario-box {
+                padding: 22px 18px;
+            }
+        }
     </style>
 </head>
 <body>
     <div class="container">
         <header class="hero">
             <div class="hero-screen-bg"></div>
-            
+
             <div class="hero-content">
                 <div class="hero-subtitle">AMANO-GAWA NEOCITY</div>
-                <h1 class="hero-title">B-SIDE: 2077</h1><br>RETRO SIGNAL</h1>
+                <h1 class="hero-title">
+                    B-SIDE: 2077<br>
+                    RETRO SIGNAL
+                </h1>
                 <p class="hero-desc">감정이 버그가 된 도시, 그 이면의 미약한 주파수</p>
             </div>
         </header>
 
-<h2 class="section-title">WORLDVIEW</h2>
-<div class="world-box">
-    <p class="world-text">
-        207X년, 아마노가와 네오시티.<br>
-        이곳은 초거대 AI 기업 <strong>'오비탈 코퍼레이션'</strong>이 관리하는 통제형 미래 도시다.<br>
-        시민들은 사이버웨어로 몸을 고치고, 안드로이드와 같은 거리를 걷고, 기업이 배급하는 데이터 속에서 살아간다.<br><br>
+        <h2 class="section-title">WORLDVIEW</h2>
 
-        하지만 이 도시에서 가장 위험한 것은 무기나 해킹 프로그램이 아니다.<br>
-        누군가를 궁금해하는 마음, 반복해서 떠올리는 이름, 자꾸만 길어지는 시선, 그리고 사랑.<br>
-        오비탈은 이런 감정을 <strong>'버그'</strong>로 분류한다.<br><br>
+        <div class="world-box">
+            <p class="world-text">
+                207X년, 아마노가와 네오시티.<br>
+                이곳은 초거대 AI 기업 <strong>'오비탈 코퍼레이션'</strong>이 관리하는 통제형 미래 도시다.<br>
+                시민들은 사이버웨어로 몸을 고치고, 안드로이드와 같은 거리를 걷고, 기업이 배급하는 데이터 속에서 살아간다.<br><br>
 
-        감정은 명령을 흔들고, 효율을 무너뜨리며, 때로는 인간을 시스템 밖으로 뛰쳐나가게 만든다.<br>
-        그래서 도시 전역 감시망 <strong>'블랙아이'</strong>는 시민의 심박, 호르몬, 대화 기록, 접촉 빈도까지 수집하며 감정의 발생을 추적한다.<br><br>
+                하지만 이 도시에서 가장 위험한 것은 무기나 해킹 프로그램이 아니다.<br>
+                누군가를 궁금해하는 마음, 반복해서 떠올리는 이름, 자꾸만 길어지는 시선, 그리고 사랑.<br>
+                오비탈은 이런 감정을 <strong>'버그'</strong>로 분류한다.<br><br>
 
-        도시의 하층 구역 <strong>'러스티'</strong>에는 오비탈의 기준에서 벗어난 사람들이 모여든다.<br>
-        낡은 카세트테이프, LP판, 시티팝, 녹슨 간판, 비에 젖은 금속 냄새가 남아 있는 곳.<br>
-        그곳의 레트로 바 <strong>'A-SIDE'</strong>는 지하 용병 크루 <strong>'B-SIDE'</strong>의 위장 아지트다.<br><br>
+                감정은 명령을 흔들고, 효율을 무너뜨리며, 때로는 인간을 시스템 밖으로 뛰쳐나가게 만든다.<br>
+                그래서 도시 전역 감시망 <strong>'블랙아이'</strong>는 시민의 심박, 호르몬, 대화 기록, 접촉 빈도까지 수집하며 감정의 발생을 추적한다.<br><br>
 
-        비사이드는 위험한 의뢰를 처리하며 살아가지만, 그들이 정말로 지키려는 것은 돈보다 오래되고 위험한 것이다.<br>
-        감정이 버그로 기록되는 도시에서, 그들은 아직 삭제되지 않은 마음의 주파수를 따라 움직인다.
-    </p>
-    
-    <div class="world-details">
-        <div class="detail-group">
-            <h4>[ CITY OVERVIEW ]</h4>
-            <dl>
-                <dt>아마노가와 네오시티</dt>
-                <dd>
-                    207X년대의 SF 사이버펑크 도시. 첨단 사이버웨어, 안드로이드, 신체 개조 기술이 보편화 됨. 동시에 카세트테이프, LP판, 오래된 시티팝 같은 구시대 아날로그 문화가 도시 곳곳에 남아 있다.
-                </dd>
+                도시의 하층 구역 <strong>'러스티'</strong>에는 오비탈의 기준에서 벗어난 사람들이 모여든다.<br>
+                낡은 카세트테이프, LP판, 시티팝, 녹슨 간판, 비에 젖은 금속 냄새가 남아 있는 곳.<br>
+                그곳의 레트로 바 <strong>'A-SIDE'</strong>는 지하 용병 크루 <strong>'B-SIDE'</strong>의 위장 아지트다.<br><br>
 
-                <dt>도시 구조</dt>
-                <dd>
-                    상층, 중층, 하층으로 나뉨. 상층은 기업과 권력의 구역, 중층은 소비와 정보 거래의 구역, 하층은 오비탈의 질서에서 밀려난 사람들이 살아가는 구역.
-                </dd>
-            </dl>
-        </div>
-
-        <div class="detail-group">
-            <h4>[ SECTORS & LOCATIONS ]</h4>
-
-            <div style="display:grid; gap:16px;">
-                <div style="border:1px solid rgba(0,243,255,0.22); background:rgba(0,243,255,0.035); padding:16px; border-radius:4px;">
-                    <h5 style="font-family:'Orbitron', sans-serif; color:var(--neon-blue); font-size:0.95rem; margin-bottom:8px;">
-                        UPPER SECTOR : 오비탈 링
-                    </h5>
-                    <p style="color:var(--text-muted); font-size:0.95rem; line-height:1.6; margin-bottom:12px;">
-                        아마노가와 네오시티의 최상층 구역. 오비탈의 핵심 권력층과 기업 시설이 모여 있는 곳.
-                        거리는 깨끗하고 조용하며, 흰 조명과 투명한 유리, 매끄러운 금속 외벽의 건물이 늘어서 있다.
-                        감정 표현은 이곳에서 사적인 일이 아니라 사회적 위험으로 여겨진다.
-                    </p>
-
-                    <dl>
-                        <dt>코어 헤드쿼터</dt>
-                        <dd>
-                            오비탈 코퍼레이션의 중추 AI. 도시 전역의 데이터가 이곳으로 모이고, 블랙아이 감시망도 이 서버망을 통해 작동한다.
-                            아마노가와 네오시티의 질서를 계산하고 유지하는 중심지.
-                        </dd>
-                    </dl>
-                </div>
-
-                <div style="border:1px solid rgba(255,0,127,0.22); background:rgba(255,0,127,0.035); padding:16px; border-radius:4px;">
-                    <h5 style="font-family:'Orbitron', sans-serif; color:var(--neon-pink); font-size:0.95rem; margin-bottom:8px;">
-                        MIDDLE SECTOR : 네온 그리드
-                    </h5>
-                    <p style="color:var(--text-muted); font-size:0.95rem; line-height:1.6; margin-bottom:12px;">
-                        도시의 상업과 유흥이 집중된 중층 구역. 홀로그램 광고, 전자음, 데이터 거래, 익명 숙박 시설이 밤낮없이 돌아간다.
-                        화려하지만 피로하며, 사람들은 이곳에서 정보와 쾌락, 도피처를 사고판다.
-                    </p>
-
-                    <dl>
-                        <dt>데이터 환전소</dt>
-                        <dd>
-                            정보가 화폐처럼 거래되는 장소. 시민 기록, 감시 로그, 기업 문서, 기억 데이터, 암호화된 의뢰 정보가 거래된다.
-                            합법과 불법의 경계는 흐리고, 중요한 것은 정보의 위험도와 가격뿐.
-                        </dd>
-
-                        <dt>벌집 캡슐 호텔</dt>
-                        <dd>
-                            신분을 묻지 않는 익명 숙박 시설. 온갖 불법 수배자, 해커, 운반책, 도망자들이 잠시 몸을 숨긴다.
-                            방은 좁고 불편하지만, 기록을 남기지 않는다는 점 때문에 많은 사람들이 이곳을 찾는다.
-                        </dd>
-                    </dl>
-                </div>
-
-                <div style="border:1px solid rgba(0,255,157,0.22); background:rgba(0,255,157,0.035); padding:16px; border-radius:4px;">
-                    <h5 style="font-family:'Orbitron', sans-serif; color:var(--neon-green); font-size:0.95rem; margin-bottom:8px;">
-                        LOWER SECTOR : 러스티
-                    </h5>
-                    <p style="color:var(--text-muted); font-size:0.95rem; line-height:1.6; margin-bottom:12px;">
-                        도시의 최저층 구역. 영구적인 산성비가 내리고, 녹슨 금속과 기름 냄새가 공기처럼 깔려 있다.
-                        폐기된 사이버웨어, 낡은 카세트테이프, 오래된 간판, 시티팝이 뒤섞인 곳.
-                        오비탈의 기준에서 밀려난 사람들과 비사이드가 살아가는 주요 무대.
-                    </p>
-
-                    <dl>
-                        <dt>레트로 바 A-SIDE</dt>
-                        <dd>
-                            러스티에 있는 낡은 레트로 바. 겉으로는 오래된 시티팝이 흐르는 술집이지만, 실제로는 비사이드의 위장 아지트.
-                            아날로그 장비와 노이즈 장치 덕분에 블랙아이의 감시가 비교적 흐려지는 사각지대.
-                        </dd>
-
-                        <dt>야매 시술소</dt>
-                        <dd>
-                            정식 병원에 갈 수 없는 사람들이 찾는 비공식 의료 구역.
-                            미등록 사이버웨어 수리, 불법 개조, 응급 치료가 이루어진다.
-                            신분보다 상처를 먼저 보는 장소.
-                        </dd>
-
-                        <dt>폐기물 묘지</dt>
-                        <dd>
-                            불량 안드로이드, 폐기계, 배양체 잔해, 고철 더미가 쌓이는 하층의 끝자락.
-                            버려진 것들이 모이는 곳이지만, 러스티의 사람들에게는 아직 쓸 수 있는 부품과 기억을 건지는 장소이기도 하다.
-                        </dd>
-                    </dl>
-                </div>
-            </div>
-        </div>
-        
-        <div class="detail-group">
-            <h4>[ FACTIONS ]</h4>
-            <dl>
-                <dt>오비탈 코퍼레이션</dt>
-                <dd>
-                    아마노가와 네오시티의 교통, 의료, 통신, 치안, 데이터 배급망을 장악한 초거대 AI 기반 기업.
-                    오비탈은 도시의 안정과 효율을 명분으로 시민을 관리한다.
-                    그들에게 감정은 인간다운 특징이 아니라, 예측을 방해하는 오류다.
-                </dd>
-
-                <dt>블랙아이</dt>
-                <dd>
-                    오비탈이 운용하는 도시 전역 감시망.
-                    카메라, 의료 데이터, 통신 기록, 생체 센서, 사이버웨어 로그를 통해 시민의 행동과 감정 변화를 추적한다.
-                    변수가 일어나기 전에 이상행동을 감지하고, 관계가 깊어지기 전에 감정 위험도를 판정한다.
-                </dd>
-
-                <dt>비사이드 (B-SIDE)</dt>
-                <dd>
-                    하층 러스티를 거점으로 활동하는 지하 용병 크루.
-                    불법 해킹, 수배자 은닉, 비인가 물품 운송, 데이터 탈취 같은 위험한 의뢰를 수행한다.
-                    오비탈의 비인간적 시스템에 반감을 품고 있다.
-                </dd>
-
-                <dt>레이 사건</dt>
-                <dd>
-                    비사이드의 전 멤버 레이는 운반 중이던 안드로이드 화물에게 품어서는 안될 깊은 마음을 품고 도주를 결행했다.
-                    오비탈은 이를 결속 감염으로 판정했고, 레이는 크루원들의 눈앞에서 소각되었다.
-                    이 사건 이후 비사이드에게 '사랑'은 최고의 사치이자 금기가 되었다.
-                </dd>
-            </dl>
-        </div>
-
-        <div class="detail-group">
-            <h4>[ EMOTION RISK PROTOCOL ]</h4>
-
-            <p style="color: var(--text-muted); font-size: 0.95rem; margin-bottom: 16px; line-height: 1.6;">
-                블랙아이는 감정을 개인의 마음이 아니라 도시 시스템을 흔드는 위험 신호로 본다.
-                감정이 깊어질수록 감시는 강화되고, 관계가 유대로 번지면 격리 대상이 된다.
-                사랑이 감지되면 소각 프로토콜이 실행된다.
+                비사이드는 위험한 의뢰를 처리하며 살아가지만, 그들이 정말로 지키려는 것은 돈보다 오래되고 위험한 것이다.<br>
+                감정이 버그로 기록되는 도시에서, 그들은 아직 삭제되지 않은 마음의 주파수를 따라 움직인다.
             </p>
 
-            <div style="display:grid; gap:8px; margin:15px 0 22px;">
-                <div style="display:grid; grid-template-columns:62px 1fr; gap:10px; align-items:center;">
-                    <span style="font-family:'Orbitron', sans-serif; color:var(--neon-blue); font-size:0.78rem;">LV.0</span>
-                    <div style="border:1px solid rgba(0,243,255,0.25); padding:8px 10px; background:rgba(0,243,255,0.04);">
-                        <strong style="color:#fff;">무감정</strong>
-                        <span style="color:var(--text-muted); font-size:0.85rem;"> | 정상 범위. 시민 기록만 유지.</span>
+            <div class="world-details">
+                <div class="detail-group">
+                    <h4>[ CITY OVERVIEW ]</h4>
+                    <dl>
+                        <dt>아마노가와 네오시티</dt>
+                        <dd>
+                            207X년대의 SF 사이버펑크 도시. 첨단 사이버웨어, 안드로이드, 신체 개조 기술이 보편화 됨. 동시에 카세트테이프, LP판, 오래된 시티팝 같은 구시대 아날로그 문화가 도시 곳곳에 남아 있다.
+                        </dd>
+
+                        <dt>도시 구조</dt>
+                        <dd>
+                            상층, 중층, 하층으로 나뉨. 상층은 기업과 권력의 구역, 중층은 소비와 정보 거래의 구역, 하층은 오비탈의 질서에서 밀려난 사람들이 살아가는 구역.
+                        </dd>
+                    </dl>
+                </div>
+
+                <div class="detail-group">
+                    <h4>[ SECTORS & LOCATIONS ]</h4>
+
+                    <div style="display:grid; gap:16px;">
+                        <div style="border:1px solid rgba(0,243,255,0.22); background:rgba(0,243,255,0.035); padding:16px; border-radius:4px;">
+                            <h5 style="font-family:'Orbitron', sans-serif; color:var(--neon-blue); font-size:0.95rem; margin-bottom:8px;">
+                                UPPER SECTOR : 오비탈 링
+                            </h5>
+                            <p style="color:var(--text-muted); font-size:0.95rem; line-height:1.6; margin-bottom:12px;">
+                                아마노가와 네오시티의 최상층 구역. 오비탈의 핵심 권력층과 기업 시설이 모여 있는 곳.
+                                거리는 깨끗하고 조용하며, 흰 조명과 투명한 유리, 매끄러운 금속 외벽의 건물이 늘어서 있다.
+                                감정 표현은 이곳에서 사적인 일이 아니라 사회적 위험으로 여겨진다.
+                            </p>
+
+                            <dl>
+                                <dt>코어 헤드쿼터</dt>
+                                <dd>
+                                    오비탈 코퍼레이션의 중추 AI. 도시 전역의 데이터가 이곳으로 모이고, 블랙아이 감시망도 이 서버망을 통해 작동한다.
+                                    아마노가와 네오시티의 질서를 계산하고 유지하는 중심지.
+                                </dd>
+                            </dl>
+                        </div>
+
+                        <div style="border:1px solid rgba(255,0,127,0.22); background:rgba(255,0,127,0.035); padding:16px; border-radius:4px;">
+                            <h5 style="font-family:'Orbitron', sans-serif; color:var(--neon-pink); font-size:0.95rem; margin-bottom:8px;">
+                                MIDDLE SECTOR : 네온 그리드
+                            </h5>
+                            <p style="color:var(--text-muted); font-size:0.95rem; line-height:1.6; margin-bottom:12px;">
+                                도시의 상업과 유흥이 집중된 중층 구역. 홀로그램 광고, 전자음, 데이터 거래, 익명 숙박 시설이 밤낮없이 돌아간다.
+                                화려하지만 피로하며, 사람들은 이곳에서 정보와 쾌락, 도피처를 사고판다.
+                            </p>
+
+                            <dl>
+                                <dt>데이터 환전소</dt>
+                                <dd>
+                                    정보가 화폐처럼 거래되는 장소. 시민 기록, 감시 로그, 기업 문서, 기억 데이터, 암호화된 의뢰 정보가 거래된다.
+                                    합법과 불법의 경계는 흐리고, 중요한 것은 정보의 위험도와 가격뿐.
+                                </dd>
+
+                                <dt>벌집 캡슐 호텔</dt>
+                                <dd>
+                                    신분을 묻지 않는 익명 숙박 시설. 온갖 불법 수배자, 해커, 운반책, 도망자들이 잠시 몸을 숨긴다.
+                                    방은 좁고 불편하지만, 기록을 남기지 않는다는 점 때문에 많은 사람들이 이곳을 찾는다.
+                                </dd>
+                            </dl>
+                        </div>
+
+                        <div style="border:1px solid rgba(0,255,157,0.22); background:rgba(0,255,157,0.035); padding:16px; border-radius:4px;">
+                            <h5 style="font-family:'Orbitron', sans-serif; color:var(--neon-green); font-size:0.95rem; margin-bottom:8px;">
+                                LOWER SECTOR : 러스티
+                            </h5>
+                            <p style="color:var(--text-muted); font-size:0.95rem; line-height:1.6; margin-bottom:12px;">
+                                도시의 최저층 구역. 영구적인 산성비가 내리고, 녹슨 금속과 기름 냄새가 공기처럼 깔려 있다.
+                                폐기된 사이버웨어, 낡은 카세트테이프, 오래된 간판, 시티팝이 뒤섞인 곳.
+                                오비탈의 기준에서 밀려난 사람들과 비사이드가 살아가는 주요 무대.
+                            </p>
+
+                            <dl>
+                                <dt>레트로 바 A-SIDE</dt>
+                                <dd>
+                                    러스티에 있는 낡은 레트로 바. 겉으로는 오래된 시티팝이 흐르는 술집이지만, 실제로는 비사이드의 위장 아지트.
+                                    아날로그 장비와 노이즈 장치 덕분에 블랙아이의 감시가 비교적 흐려지는 사각지대.
+                                </dd>
+
+                                <dt>야매 시술소</dt>
+                                <dd>
+                                    정식 병원에 갈 수 없는 사람들이 찾는 비공식 의료 구역.
+                                    미등록 사이버웨어 수리, 불법 개조, 응급 치료가 이루어진다.
+                                    신분보다 상처를 먼저 보는 장소.
+                                </dd>
+
+                                <dt>폐기물 묘지</dt>
+                                <dd>
+                                    불량 안드로이드, 폐기계, 배양체 잔해, 고철 더미가 쌓이는 하층의 끝자락.
+                                    버려진 것들이 모이는 곳이지만, 러스티의 사람들에게는 아직 쓸 수 있는 부품과 기억을 건지는 장소이기도 하다.
+                                </dd>
+                            </dl>
+                        </div>
                     </div>
                 </div>
 
-                <div style="text-align:center; color:var(--text-muted); font-size:0.75rem;">↓</div>
+                <div class="detail-group">
+                    <h4>[ FACTIONS ]</h4>
+                    <dl>
+                        <dt>오비탈 코퍼레이션</dt>
+                        <dd>
+                            아마노가와 네오시티의 교통, 의료, 통신, 치안, 데이터 배급망을 장악한 초거대 AI 기반 기업.
+                            오비탈은 도시의 안정과 효율을 명분으로 시민을 관리한다.
+                            그들에게 감정은 인간다운 특징이 아니라, 예측을 방해하는 오류다.
+                        </dd>
 
-                <div style="display:grid; grid-template-columns:62px 1fr; gap:10px; align-items:center;">
-                    <span style="font-family:'Orbitron', sans-serif; color:var(--neon-green); font-size:0.78rem;">LV.1</span>
-                    <div style="border:1px solid rgba(0,255,157,0.25); padding:8px 10px; background:rgba(0,255,157,0.04);">
-                        <strong style="color:#fff;">호기심</strong>
-                        <span style="color:var(--text-muted); font-size:0.85rem;"> | 경미한 이상값. 시선과 대화 기록이 수집.</span>
-                    </div>
+                        <dt>블랙아이</dt>
+                        <dd>
+                            오비탈이 운용하는 도시 전역 감시망.
+                            카메라, 의료 데이터, 통신 기록, 생체 센서, 사이버웨어 로그를 통해 시민의 행동과 감정 변화를 추적한다.
+                            변수가 일어나기 전에 이상행동을 감지하고, 관계가 깊어지기 전에 감정 위험도를 판정한다.
+                        </dd>
+
+                        <dt>비사이드 (B-SIDE)</dt>
+                        <dd>
+                            하층 러스티를 거점으로 활동하는 지하 용병 크루.
+                            불법 해킹, 수배자 은닉, 비인가 물품 운송, 데이터 탈취 같은 위험한 의뢰를 수행한다.
+                            오비탈의 비인간적 시스템에 반감을 품고 있다.
+                        </dd>
+
+                        <dt>레이 사건</dt>
+                        <dd>
+                            비사이드의 전 멤버 레이는 운반 중이던 안드로이드 화물에게 품어서는 안될 깊은 마음을 품고 도주를 결행했다.
+                            오비탈은 이를 결속 감염으로 판정했고, 레이는 크루원들의 눈앞에서 소각되었다.
+                            이 사건 이후 비사이드에게 '사랑'은 최고의 사치이자 금기가 되었다.
+                        </dd>
+                    </dl>
                 </div>
 
-                <div style="text-align:center; color:var(--text-muted); font-size:0.75rem;">↓</div>
+                <div class="detail-group">
+                    <h4>[ EMOTION RISK PROTOCOL ]</h4>
 
-                <div style="display:grid; grid-template-columns:62px 1fr; gap:10px; align-items:center;">
-                    <span style="font-family:'Orbitron', sans-serif; color:var(--neon-yellow); font-size:0.78rem;">LV.2</span>
-                    <div style="border:1px solid rgba(240,165,0,0.3); padding:8px 10px; background:rgba(240,165,0,0.04);">
-                        <strong style="color:#fff;">호감</strong>
-                        <span style="color:var(--text-muted); font-size:0.85rem;"> | 관찰 대상. 반복 접촉과 생체 반응이 대조됨.</span>
+                    <p style="color: var(--text-muted); font-size: 0.95rem; margin-bottom: 16px; line-height: 1.6;">
+                        블랙아이는 감정을 개인의 마음이 아니라 도시 시스템을 흔드는 위험 신호로 본다.
+                        감정이 깊어질수록 감시는 강화되고, 관계가 유대로 번지면 격리 대상이 된다.
+                        사랑이 감지되면 소각 프로토콜이 실행된다.
+                    </p>
+
+                    <div style="display:grid; gap:8px; margin:15px 0 22px;">
+                        <div style="display:grid; grid-template-columns:62px 1fr; gap:10px; align-items:center;">
+                            <span style="font-family:'Orbitron', sans-serif; color:var(--neon-blue); font-size:0.78rem;">LV.0</span>
+                            <div style="border:1px solid rgba(0,243,255,0.25); padding:8px 10px; background:rgba(0,243,255,0.04);">
+                                <strong style="color:#fff;">무감정</strong>
+                                <span style="color:var(--text-muted); font-size:0.85rem;"> | 정상 범위. 시민 기록만 유지.</span>
+                            </div>
+                        </div>
+
+                        <div style="text-align:center; color:var(--text-muted); font-size:0.75rem;">↓</div>
+
+                        <div style="display:grid; grid-template-columns:62px 1fr; gap:10px; align-items:center;">
+                            <span style="font-family:'Orbitron', sans-serif; color:var(--neon-green); font-size:0.78rem;">LV.1</span>
+                            <div style="border:1px solid rgba(0,255,157,0.25); padding:8px 10px; background:rgba(0,255,157,0.04);">
+                                <strong style="color:#fff;">호기심</strong>
+                                <span style="color:var(--text-muted); font-size:0.85rem;"> | 경미한 이상값. 시선과 대화 기록이 수집.</span>
+                            </div>
+                        </div>
+
+                        <div style="text-align:center; color:var(--text-muted); font-size:0.75rem;">↓</div>
+
+                        <div style="display:grid; grid-template-columns:62px 1fr; gap:10px; align-items:center;">
+                            <span style="font-family:'Orbitron', sans-serif; color:var(--neon-yellow); font-size:0.78rem;">LV.2</span>
+                            <div style="border:1px solid rgba(240,165,0,0.3); padding:8px 10px; background:rgba(240,165,0,0.04);">
+                                <strong style="color:#fff;">호감</strong>
+                                <span style="color:var(--text-muted); font-size:0.85rem;"> | 관찰 대상. 반복 접촉과 생체 반응이 대조됨.</span>
+                            </div>
+                        </div>
+
+                        <div style="text-align:center; color:var(--text-muted); font-size:0.75rem;">↓</div>
+
+                        <div style="display:grid; grid-template-columns:62px 1fr; gap:10px; align-items:center;">
+                            <span style="font-family:'Orbitron', sans-serif; color:var(--neon-yellow); font-size:0.78rem;">LV.3</span>
+                            <div style="border:1px solid rgba(240,165,0,0.45); padding:8px 10px; background:rgba(240,165,0,0.07);">
+                                <strong style="color:#fff;">애착</strong>
+                                <span style="color:var(--text-muted); font-size:0.85rem;"> | 감시 강화. 이동 경로와 관계망이 추적됨.</span>
+                            </div>
+                        </div>
+
+                        <div style="text-align:center; color:var(--text-muted); font-size:0.75rem;">↓</div>
+
+                        <div style="display:grid; grid-template-columns:62px 1fr; gap:10px; align-items:center;">
+                            <span style="font-family:'Orbitron', sans-serif; color:var(--neon-pink); font-size:0.78rem;">LV.4</span>
+                            <div style="border:1px solid rgba(255,0,127,0.45); padding:8px 10px; background:rgba(255,0,127,0.07);">
+                                <strong style="color:#fff;">집착</strong>
+                                <span style="color:var(--text-muted); font-size:0.85rem;"> | 통제 이탈 위험. 행동 교정 및 격리 후보 등록.</span>
+                            </div>
+                        </div>
+
+                        <div style="text-align:center; color:var(--text-muted); font-size:0.75rem;">↓</div>
+
+                        <div style="display:grid; grid-template-columns:62px 1fr; gap:10px; align-items:center;">
+                            <span style="font-family:'Orbitron', sans-serif; color:var(--neon-red); font-size:0.78rem;">LV.5</span>
+                            <div style="border:1px solid rgba(255,42,42,0.55); padding:8px 10px; background:rgba(255,42,42,0.08);">
+                                <strong style="color:#fff;">유대</strong>
+                                <span style="color:var(--text-muted); font-size:0.85rem;"> | 격리 대상. 관계 자체가 감염원으로 분류.</span>
+                            </div>
+                        </div>
+
+                        <div style="text-align:center; color:var(--neon-red); font-size:0.75rem;">↓</div>
+
+                        <div style="display:grid; grid-template-columns:62px 1fr; gap:10px; align-items:center;">
+                            <span style="font-family:'Orbitron', sans-serif; color:var(--neon-red); font-size:0.78rem; text-shadow:0 0 8px var(--neon-red);">LV.6</span>
+                            <div style="border:1px solid rgba(255,42,42,0.85); padding:8px 10px; background:rgba(255,42,42,0.14); box-shadow:0 0 14px rgba(255,42,42,0.12);">
+                                <strong style="color:#fff;">사랑</strong>
+                                <span style="color:var(--text-muted); font-size:0.85rem;"> | 즉시 소각. 도시가 판정하는 최상위 감정 버그.</span>
+                            </div>
+                        </div>
                     </div>
-                </div>
 
-                <div style="text-align:center; color:var(--text-muted); font-size:0.75rem;">↓</div>
+                    <dl>
+                        <dt>소각 프로토콜</dt>
+                        <dd>
+                            오비탈이 감정 버그의 확산을 막기 위해 실행하는 최종 조치.
+                            대상의 육체, 시민 DB, 네트워크 기록, 사진, 음성, 거래 흔적, 관계 로그가 모두 삭제된다.
+                            소각된 사람은 죽은 사람으로 남는 것이 아니라, 도시 안에서 처음부터 존재하지 않았던 사람으로 처리된다.
+                        </dd>
 
-                <div style="display:grid; grid-template-columns:62px 1fr; gap:10px; align-items:center;">
-                    <span style="font-family:'Orbitron', sans-serif; color:var(--neon-yellow); font-size:0.78rem;">LV.3</span>
-                    <div style="border:1px solid rgba(240,165,0,0.45); padding:8px 10px; background:rgba(240,165,0,0.07);">
-                        <strong style="color:#fff;">애착</strong>
-                        <span style="color:var(--text-muted); font-size:0.85rem;"> | 감시 강화. 이동 경로와 관계망이 추적됨.</span>
-                    </div>
-                </div>
+                        <dt>감정 전염 판정</dt>
+                        <dd>
+                            블랙아이는 감정을 관계망을 타고 번지는 위험 요소로 판단.
+                            한 사람의 유대가 다른 사람의 선택을 바꾸고, 명령 불복종이나 자기희생으로 이어질 가능성이 있으면 감시는 개인을 넘어 주변 인물과 구역 전체로 확대된다.
+                        </dd>
 
-                <div style="text-align:center; color:var(--text-muted); font-size:0.75rem;">↓</div>
-
-                <div style="display:grid; grid-template-columns:62px 1fr; gap:10px; align-items:center;">
-                    <span style="font-family:'Orbitron', sans-serif; color:var(--neon-pink); font-size:0.78rem;">LV.4</span>
-                    <div style="border:1px solid rgba(255,0,127,0.45); padding:8px 10px; background:rgba(255,0,127,0.07);">
-                        <strong style="color:#fff;">집착</strong>
-                        <span style="color:var(--text-muted); font-size:0.85rem;"> | 통제 이탈 위험. 행동 교정 및 격리 후보 등록.</span>
-                    </div>
-                </div>
-
-                <div style="text-align:center; color:var(--text-muted); font-size:0.75rem;">↓</div>
-
-                <div style="display:grid; grid-template-columns:62px 1fr; gap:10px; align-items:center;">
-                    <span style="font-family:'Orbitron', sans-serif; color:var(--neon-red); font-size:0.78rem;">LV.5</span>
-                    <div style="border:1px solid rgba(255,42,42,0.55); padding:8px 10px; background:rgba(255,42,42,0.08);">
-                        <strong style="color:#fff;">유대</strong>
-                        <span style="color:var(--text-muted); font-size:0.85rem;"> | 격리 대상. 관계 자체가 감염원으로 분류.</span>
-                    </div>
-                </div>
-
-                <div style="text-align:center; color:var(--neon-red); font-size:0.75rem;">↓</div>
-
-                <div style="display:grid; grid-template-columns:62px 1fr; gap:10px; align-items:center;">
-                    <span style="font-family:'Orbitron', sans-serif; color:var(--neon-red); font-size:0.78rem; text-shadow:0 0 8px var(--neon-red);">LV.6</span>
-                    <div style="border:1px solid rgba(255,42,42,0.85); padding:8px 10px; background:rgba(255,42,42,0.14); box-shadow:0 0 14px rgba(255,42,42,0.12);">
-                        <strong style="color:#fff;">사랑</strong>
-                        <span style="color:var(--text-muted); font-size:0.85rem;"> | 즉시 소각. 도시가 판정하는 최상위 감정 버그.</span>
-                    </div>
+                        <dt>A-SIDE의 사각지대</dt>
+                        <dd>
+                            A-SIDE는 블랙아이의 감시가 약해지는 장소.
+                            오래된 아날로그 장비, 노이즈 발생 장치, 비사이드의 우회 회선이 뒤섞여 생체 로그와 감정 신호가 선명하게 수집되지 않는다.
+                            그래서 이곳은 비사이드가 숨을 쉬고, 거래하고, 아주 작은 마음의 흔들림을 감출 수 있는 공간이다.<br>
+                            <br>P.S. 다, 이 키스님 덕분이라고? —— 짱짱 멋쟁이 키스 💋
+                        </dd>
+                    </dl>
                 </div>
             </div>
 
-            <dl>
-                <dt>소각 프로토콜</dt>
-                <dd>
-                    오비탈이 감정 버그의 확산을 막기 위해 실행하는 최종 조치.
-                    대상의 육체, 시민 DB, 네트워크 기록, 사진, 음성, 거래 흔적, 관계 로그가 모두 삭제된다.
-                    소각된 사람은 죽은 사람으로 남는 것이 아니라, 도시 안에서 처음부터 존재하지 않았던 사람으로 처리된다.
-                </dd>
-
-                <dt>감정 전염 판정</dt>
-                <dd>
-                    블랙아이는 감정을 관계망을 타고 번지는 위험 요소로 판단.
-                    한 사람의 유대가 다른 사람의 선택을 바꾸고, 명령 불복종이나 자기희생으로 이어질 가능성이 있으면 감시는 개인을 넘어 주변 인물과 구역 전체로 확대된다.
-                </dd>
-
-                <dt>A-SIDE의 사각지대</dt>
-                <dd>
-                    A-SIDE는 블랙아이의 감시가 약해지는 장소.
-                    오래된 아날로그 장비, 노이즈 발생 장치, 비사이드의 우회 회선이 뒤섞여 생체 로그와 감정 신호가 선명하게 수집되지 않는다.
-                    그래서 이곳은 비사이드가 숨을 쉬고, 거래하고, 아주 작은 마음의 흔들림을 감출 수 있는 공간이다.<br>
-                    <br>P.S. 다, 이 키스님 덕분이라고? —— 짱짱 멋쟁이 키스 💋
-                </dd>
-            </dl>
+            <div class="keyword-tags">
+                <span class="tag">#사이버펑크</span>
+                <span class="tag">#디스토피아</span>
+                <span class="tag">#AI감시도시</span>
+                <span class="tag">#레트로_아날로그</span>
+                <span class="tag alert">⚠️ 감정 소각 프로토콜 가동 중</span>
+            </div>
         </div>
-    </div>
-
-    <div class="keyword-tags">
-        <span class="tag">#사이버펑크</span>
-        <span class="tag">#디스토피아</span>
-        <span class="tag">#AI감시도시</span>
-        <span class="tag">#레트로_아날로그</span>
-        <span class="tag alert">⚠️ 감정 소각 프로토콜 가동 중</span>
-    </div>
-</div>
 
         <h2 class="section-title">CREW MEMBERS</h2>
+
         <div class="char-list">
-            
             <div class="char-card shane">
                 <div class="char-img-wrap">
                     <img src="https://raw.githubusercontent.com/Rkab00/Bs/refs/heads/main/Sinfo.png" alt="셰인">
@@ -1033,10 +953,10 @@ body {
                     </div>
                 </div>
             </div>
-
         </div>
 
         <h2 class="section-title">SUB NPC</h2>
+
         <div class="char-list">
             <div class="char-card ray">
                 <div class="char-img-wrap">
@@ -1064,7 +984,7 @@ body {
         </div>
 
         <h2 class="section-title">STARTING POINT</h2>
-        
+
         <div class="scenario-box">
             <h3 class="scenario-title"><span>ROUTE A</span> 화물 운반</h3>
             <p class="scenario-desc">
