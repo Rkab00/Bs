@@ -30,12 +30,19 @@
             padding: 0;
             box-sizing: border-box;
             word-break: keep-all;
-            -webkit-print-color-adjust: exact;
-            print-color-adjust: exact;
+            -webkit-print-color-adjust: exact !important;
+            print-color-adjust: exact !important;
+            color-adjust: exact !important;
+        }
+
+        html,
+        body {
+            width: 100%;
+            min-height: 100%;
+            background-color: var(--bg-color);
         }
 
         body {
-            background-color: var(--bg-color);
             color: var(--text-main);
             font-family: 'Noto Sans KR', sans-serif;
             font-size: 15px;
@@ -46,6 +53,7 @@
             background-size: cover;
             background-position: center;
             background-attachment: scroll;
+            background-repeat: no-repeat;
         }
 
         .container {
@@ -58,85 +66,18 @@
             overflow: hidden;
         }
 
-        /* --- Hero Section --- */
+        /* --- Hero Image Only --- */
         .hero {
             width: 100%;
-            aspect-ratio: 3 / 2;
-            display: grid;
             overflow: hidden;
             border-bottom: 2px solid var(--neon-blue);
             background: #050507;
         }
 
-        .hero-bg-img {
-            grid-area: 1 / 1;
-            width: 100%;
-            height: 100%;
+        .hero-img {
             display: block;
-            object-fit: cover;
-            object-position: center;
-            z-index: 1;
-        }
-
-        .hero-dim {
-            grid-area: 1 / 1;
             width: 100%;
-            height: 100%;
-            background:
-                radial-gradient(circle at center, rgba(0, 243, 255, 0.06), rgba(0, 0, 0, 0.42) 70%),
-                linear-gradient(rgba(5, 5, 7, 0.32), rgba(5, 5, 7, 0.58));
-            z-index: 2;
-            pointer-events: none;
-        }
-
-        .hero-scan {
-            grid-area: 1 / 1;
-            width: 100%;
-            height: 100%;
-            background:
-                linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.16) 50%),
-                linear-gradient(90deg, rgba(255, 0, 0, 0.04), rgba(0, 255, 0, 0.015), rgba(0, 0, 255, 0.04));
-            background-size: 100% 3px, 3px 100%;
-            z-index: 3;
-            pointer-events: none;
-        }
-
-        .hero-content {
-            grid-area: 1 / 1;
-            align-self: center;
-            justify-self: center;
-            z-index: 4;
-            text-align: center;
-            padding: 20px;
-        }
-
-        .hero-subtitle {
-            font-family: 'Orbitron', sans-serif;
-            color: var(--neon-blue);
-            letter-spacing: 3px;
-            font-size: clamp(0.65rem, 2.4vw, 0.85rem);
-            margin-bottom: 15px;
-            text-shadow: 0 0 10px rgba(0, 243, 255, 1);
-        }
-
-        .hero-title {
-            font-size: clamp(2.2rem, 9vw, 3.3rem);
-            font-weight: 900;
-            line-height: 1.05;
-            margin-bottom: 20px;
-            color: #fff;
-            text-shadow:
-                3px 3px 0px var(--neon-red),
-                -3px -3px 0px var(--neon-blue),
-                0 0 20px rgba(0, 0, 0, 0.8);
-        }
-
-        .hero-desc {
-            font-size: clamp(0.9rem, 3.2vw, 1.05rem);
-            line-height: 1.5;
-            color: #fff;
-            font-weight: 500;
-            text-shadow: 0 0 10px rgba(0, 0, 0, 1);
+            height: auto;
         }
 
         /* Section Title */
@@ -465,29 +406,6 @@
             margin-bottom: 10px;
         }
 
-        @media print {
-            body {
-                background: #050507 !important;
-            }
-
-            .container {
-                background: #050507 !important;
-                box-shadow: none !important;
-                border-left: none !important;
-                border-right: none !important;
-            }
-
-            .hero {
-                break-inside: avoid;
-                page-break-inside: avoid;
-            }
-
-            img {
-                max-width: 100%;
-            }
-        }
-
-        /* 모바일 최적화 */
         @media (max-width: 480px) {
             .container {
                 width: 100%;
@@ -537,30 +455,19 @@
         }
     </style>
 </head>
-
 <body>
     <div class="container">
         <header class="hero">
             <img
-                class="hero-bg-img"
+                class="hero-img"
                 src="https://raw.githubusercontent.com/Rkab00/Bs/refs/heads/main/BG.png"
-                alt=""
+                width="1672"
+                height="941"
+                alt="B-SIDE: 2077 RETRO SIGNAL"
                 loading="eager"
                 decoding="sync"
                 fetchpriority="high"
             >
-
-            <div class="hero-dim" aria-hidden="true"></div>
-            <div class="hero-scan" aria-hidden="true"></div>
-
-            <div class="hero-content">
-                <div class="hero-subtitle">AMANO-GAWA NEOCITY</div>
-                <h1 class="hero-title">
-                    B-SIDE: 2077<br>
-                    RETRO SIGNAL
-                </h1>
-                <p class="hero-desc">감정이 버그가 된 도시, 그 이면의 미약한 주파수</p>
-            </div>
         </header>
 
         <h2 class="section-title">WORLDVIEW</h2>
